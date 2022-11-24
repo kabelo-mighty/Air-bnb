@@ -1,0 +1,20 @@
+<section id="contact" class="contact-clean" style="color: rgb(33, 37, 41);background: rgb(38,38,38);">
+    <h2 class="text-center" style="color: #DEAE05;font-size: 20px;">Contact us</h2>
+    <form class="shadow-none"  #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)" method="post" style="background: rgb(38,38,38);">
+        <label class="form-label" style="color: rgb(229,229,229);font-size: 13px;">Fullnames</label>
+        <input class="form-control form-control-sm"  id="fullname" ngModel name="fullname" type="text" style="border-radius: 10px;">
+        <label class="form-label" style="color: rgb(229,229,229);font-size: 13px;">Email</label>
+        <div class="mb-3"><input class="form-control form-control-sm" type="email"id="email" ngModel name="email"  style="border-radius: 10px;font-size: 13px;"></div>
+        <label class="form-label" style="color: rgb(229,229,229);font-size: 13px;">Message</label>
+        <textarea class="form-control" style="border-radius: 10px;" id="message" ngModel name="message" ></textarea>
+        <div style="padding-top: 15px;"><button class="btn btn-sm text-capitalize w-100" type="submit" style="background: #DEAE05;border-radius: 10px;color: rgb(255,255,255);">send</button></div>
+    </form>
+</section>
+
+
+    <div class="updated" [class.visible]="isVisible"> 
+        <i class="fa fa-exclamation-circle" style="font-size: 20px;"></i> Thanks for contacting us.
+    </div>
+
+
+

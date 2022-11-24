@@ -1,0 +1,31 @@
+<app-navbaradmin></app-navbaradmin>
+<div class="container-fluid">
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-dark mb-0" style="font-size: 16px;font-weight: bold;">Admin</h3>
+    </div>
+
+    <div class="row login-form">
+        <div class="col-md-4 offset-md-4" *ngFor="let e of Rooms">
+            <div></div>
+           
+            <div style="height: 24px;background: #DEAE05;border-top-left-radius: 5px;border-top-right-radius: 5px;">
+                <h1 class="float-none"></h1>
+                <p class="d-flex justify-content-center" style="color: rgb(255,255,255);"><a class="d-block float-start" href="#" style="color: rgb(255,255,255);"></a><strong>Update Room</strong></p>
+            </div>
+            <form   #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)" class="custom-form" style="background: rgba(0,0,0,0.76);border-style: none;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;"><label class="form-label" style="color: #DEAE05;">Title</label>
+                <div class="input-group" style="border-style: none;"><input id="title" ngModel name="title"[(ngModel)]="e.title" class="form-control" type="text" style="border-style: none;" /><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-user" style="color: rgb(255,255,255);"></i></span></div><label class="form-label" style="color: #DEAE05;">Price</label>
+                <div class="input-group" style="border-style: none;"><input id="price"  ngModel name="price" [(ngModel)]="e.price" class="form-control" vlaue="2134567890" type="text" style="border-style: none;" /><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-user" style="color: rgb(255,255,255);"></i></span></div><label class="form-label" style="color: #DEAE05;">Upload Image Url</label>
+                <div class="input-group" style="border-style: none;"><input id="img_url"  ngModel name="img_url" [(ngModel)]="e.img_url" class="form-control" type="text" style="border-style: none;" /><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-user" style="color: rgb(255,255,255);"></i></span></div><label class="form-label" style="color: #DEAE05;">Description</label><textarea  id="description" [(ngModel)]="e.description" ngModel name="description"  class="form-control"></textarea>
+                <button class="btn btn-sm d-block submit-button w-100" type="submit" style="background: #DEAE05;border-radius: 5px;"><i class="fa fa-circle-o-notch"></i> Save</button>
+            </form>
+        </div>
+    </div>
+</div>    <!--------arlet-->
+
+    <div class="updated" [class.visible]="isVisible"> 
+        <i class="fa fa-exclamation-circle" style="font-size: 20px;"></i> Room updated successfully.
+    </div>
+    <!-----------------> 
+<app-footer></app-footer>
+
+

@@ -1,0 +1,67 @@
+
+<app-navbar></app-navbar>
+
+<br>
+<br>
+<!--------arlet-->
+
+<div class="remove" [class.visible]="isVisible"> 
+    <i class="fa fa-warning" style="font-size: 20px;"></i> Booking deleted successfully.
+</div>
+<!-----------------> 
+<div class="container">
+    <div class="container-fluid">
+        <div class="d-sm-flex justify-content-between align-items-center mb-4">
+            <h3 class="text-dark mb-0" style="font-size: 16px;font-weight: bold;">My bookings</h3>
+        </div>
+    </div>
+    <div style="height: 24px;background: #DEAE05;border-top-left-radius: 5px;border-top-right-radius: 5px;">
+        <h1 class="float-none"></h1>
+        <p class="d-flex justify-content-center" style="color: rgb(255,255,255);"><a class="d-block float-start" href="#" style="color: rgb(255,255,255);"></a><strong>My Bookings</strong></p>
+    </div>
+    <div class="table-responsive" style="font-size: 11px;">
+        <table class="table table-striped table-sm table-bordered">
+            <thead>
+                <tr style="font-size: 11px;">
+                    <th>No.</th>
+                    <th><i class="fa fa-home"></i>Room</th>
+                    <th><i class="fa fa-calendar"></i> Check In</th>
+                    <th> <i class="fa fa-calendar"></i> Check Out</th>
+                    <th><i class="fas fa-circle-notch"></i>Status</th>
+                    <th><i class="fa fa-cogs"></i>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let e of info;let i=index;">
+                  
+                    <td>{{i+1}}</td>
+                    <td>{{e.title}}</td>
+                    <td>{{e.checkin| date: 'dd/MM/yyyy'}}</td>
+                    <td>{{e.checkout| date: 'dd/MM/yyyy'}}</td>
+                    <td>
+                       
+                            <span  *ngIf="e.approved == 0" style="background: #eec637;color: rgb(255,255,255);border-radius: 15px;font-size: 10px;">&nbsp;pending&nbsp;</span>
+                        <span *ngIf="e.approved == 1" style="background: #58c614;color: rgb(255,255,255);border-radius: 15px;font-size: 10px;">&nbsp;Approved&nbsp;</span>
+                        <span *ngIf="e.approved == 2" style="background: #c61414;color: rgb(255,255,255);border-radius: 15px;font-size: 10px;">&nbsp;cancelled&nbsp;</span>
+                        
+
+                    </td>
+                    <td>
+                        <p>
+                            <span *ngIf="e.approved == 1"><a style="display:none" (click)= editbook(e) title="edit"><i class="fa fa-edit"   style="color: rgb(78,223,92);"></i>
+                            </a></span>
+                            <span *ngIf="e.approved == 0"><a (click)= editbook(e) title="edit"><i class="fa fa-edit"   style="color: rgb(78,223,92);"></i>
+                        </a></span>
+                        
+                        &nbsp;&nbsp;<a title="delete" (click)= remove(e)><i class="fa fa-trash" style="color: rgb(223,87,78);"></i>
+                        </a>&nbsp;&nbsp;<a title="view" style="color:blue;" (click)= viewbook(e)><i class="fa fa-eye"></i></a></p>
+                    </td>
+                </tr>
+             
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<app-footer></app-footer>
+

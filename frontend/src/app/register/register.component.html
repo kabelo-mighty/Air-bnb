@@ -1,0 +1,45 @@
+
+<body style="font-family: Raleway, sans-serif;">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-search" style="background: #262626;">
+        <div class="container"><a class="navbar-brand" routerLink="/" style="color: rgb(255,255,255);"><i class="fas fa-door-open" style="color: #DEAE05;"></i>LaItalia</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1" style="border-style: none;"><span class="visually-hidden">Toggle navigation</span><i class="icon ion-android-menu" style="color: #DEAE05;"></i></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" routerLink="/"  style="color: rgb(255,255,255);">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" routerLink="/"  style="color: rgb(255,255,255);">Our Services</a></li>
+                    <li class="nav-item"><a class="nav-link" routerLink="/"  style="color: rgb(255,255,255);">Our Features</a></li>
+                    <li class="nav-item"><a class="nav-link" routerLink="/"  style="color: rgb(255,255,255);">Contact Us</a></li>
+                </ul><a class="btn btn-light d-table-cell action-button" role="button" routerLink="/register" style="background: #DEAE05;border-radius: 10px;margin-bottom: 10px;border-width: 2px;">Sign Up</a>&nbsp;<a class="btn btn-light d-table-cell action-button" role="button" routerLink="/login" style="background: #262626;border-radius: 10px;margin-bottom: 10px;border: 1px solid #DEAE05 ;">Sign In</a>
+            </div>
+        </div>
+    </nav>
+    <div class="row login-form">
+        <div class="col-md-4 offset-md-4">
+            <div></div>
+            <h1 style="text-align: center;margin-top: 42px;"><i class="fas fa-door-open" style="color: #DEAE05;"></i>LaItalia<span style="color: #DEAE05;">BnB</span></h1>
+            <div style="height: 24px;background: #DEAE05;border-top-left-radius: 5px;border-top-right-radius: 5px;">
+                <h1 class="float-none"></h1>
+                <p class="d-flex justify-content-center" style="color: rgb(255,255,255);"><a class="d-block float-start" href="#" style="color: rgb(255,255,255);"></a><strong>Sign Up</strong></p>
+            </div>
+            <form class="custom-form" #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)" style="background: rgba(0,0,0,0.76);border-style: none;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;"><label class="form-label" style="color: #DEAE05;">Firstname</label>
+                <div class="input-group"  style="border-style: none;"><input class="form-control" class="form-control" id="firstname" ngModel name="firstname" type="text" style="border-style: none;"><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-user" style="color: rgb(255,255,255);"></i></span></div><label class="form-label" style="color: #DEAE05;">Lastname</label>
+                <div class="input-group" style="border-style: none;"><input class="form-control" type="text" id="lastname" ngModel name="lastname" style="border-style: none;"><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-user" style="color: rgb(255,255,255);"></i></span></div><label class="form-label" style="color: #DEAE05;">Email</label>
+                <div class="input-group" style="border-style: none;"><input class="form-control" type="text" id="email" ngModel name="email"  style="border-style: none;"><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-envelope" style="color: rgb(255,255,255);"></i></span></div><label class="form-label" style="color: #DEAE05;">Password</label>
+                <div class="input-group" style="border-style: none;"><input class="form-control" type="password" id="password" ngModel name="password" style="border-style: none;"><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-lock" style="color: rgb(255,255,255);"></i></span></div><label class="form-label" style="color: #DEAE05;">Confirm Password</label>
+                <div class="input-group" style="border-style: none;"><input class="form-control" type="text" type="password" id="confirm" ngModel name="confirm" style="border-style: none;"><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-lock" style="color: rgb(255,255,255);"></i></span></div><button class="btn btn-sm d-block submit-button w-100" type="submit" style="background: #DEAE05;border-radius: 5px;"><i class="fa fa-circle-o-notch"></i>&nbsp;Sign Up</button>
+            </form>
+
+
+
+
+            
+        </div>
+    </div>
+    <footer class="footer-basic">
+        <p class="copyright">LaItalia BnB © 2022</p>
+    </footer>
+ 
+</body>
+<router-outlet></router-outlet>
+<div class="updated" [class.visible]="isVisible"> 
+    <i class="fa fa-exclamation-circle" style="font-size: 20px;"></i> User registered successfully.
+</div>

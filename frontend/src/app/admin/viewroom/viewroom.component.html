@@ -1,0 +1,32 @@
+<app-navbaradmin></app-navbaradmin>
+
+<div class="container">
+
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-dark mb-0" style="font-size: 16px;font-weight: bold;">Added Rooms</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-4"  *ngFor="let e of info;">
+            <div class="card-group" style="border-radius: 10px;">
+                <div class="card" style="border-radius: 10px;"><img class="card-img-top w-100 d-block" src="{{e.img_url}}" style="border-top-left-radius: 10px;border-top-right-radius: 10px;height: 140px;" />
+                    <div class="card-body" style="background: #262626;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
+                        <h4 class="card-title" style="font-size: 15px;color: #DEAE05;">{{e.title}}<span class="float-end">R {{e.price}}</span></h4>
+                        <h4 class="text-center card-title" style="font-size: 15px;color: #DEAE05;">
+                            <a class="btn btn-sm float-start" (click)=edit(e) style="border-color: #deae05;color: rgb(255,255,255);">Edit</a>
+                            <a class="btn btn-sm float-end"  (click)=delete(e) style="border-color: #deae05;color: rgb(255,255,255);">Delete</a></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+       
+    </div>
+</div>
+<app-footer></app-footer>
+
+    <!--------arlet-->
+
+<div class="updated" [class.visible]="isVisible"> 
+    <i class="fa fa-exclamation-circle" style="font-size: 20px;"></i> Room deleted.
+</div>
+<!-----------------> 

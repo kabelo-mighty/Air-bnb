@@ -1,0 +1,53 @@
+
+<app-navbar></app-navbar>
+<!--------arlet-->
+
+<div class="updated" [class.visible]="isVisible"> 
+    <i class="fa fa-exclamation-circle" style="font-size: 20px;"></i> Booking dates upadted.
+</div>
+<!-----------------> 
+<div class="container-fluid" *ngFor="let e of Books;">
+ 
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+     
+    </div>
+    <div></div>
+    <div class="row login-form">
+
+        <div class="col-md-4 offset-md-4">
+            <h3 class="text-dark mb-0" style="font-size: 16px;font-weight: bold;">{{e.title}}</h3>
+            <hr>
+            <div></div><img class="img-fluid" style="height: auto;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;border-top-left-radius: 10px;border-top-right-radius: 10px;" src="{{e.img_url}}" />
+            <br><br>
+            <p class="text-secondary" style="text-align: left;font-size: 14px;font-family: 'Open Sans', sans-serif;line-height: 22px;color: rgb(9,9,10);margin-left: 24px;"> {{e.description}} </p>
+            
+           
+            <hr>
+            <h3 class="text-dark mb-0" style="font-size: 16px;font-weight: bold;">Booking Dates Details</h3>
+            <hr>
+            <p class="text-dark mb-0" style="font-size: 14px;"><i style="color: rgb(108, 249, 108);"class="fas fa-calendar-alt"></i>  Current-Check In Date : <strong>{{e.checkin| date: 'dd/MM/yyyy'}}</strong></p>
+            
+            <p class="text-dark mb-0" style="font-size: 14px;"><i style="color: rgb(232, 60, 60);" class="fas fa-calendar-alt"></i>  Current-Check Out Date : <strong>{{e.checkout| date: 'dd/MM/yyyy'}}</strong></p>
+            <hr>
+
+            <br>
+            <div style="height: 24px;background: #DEAE05;border-top-left-radius: 10px;border-top-right-radius: 10px;">
+                <h1 class="float-none"></h1>
+                <p class="d-flex justify-content-center" style="color: rgb(255,255,255);"><a class="d-block float-start" href="#" style="color: rgb(255,255,255);"></a><strong>Update Booking Dates</strong></p>
+            </div>
+            <form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)" class="custom-form" style="background: rgba(0,0,0,0.76);border-style: none;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
+                <div class="input-group" style="border-style: none;"></div>
+                <div class="row">
+                    <div class="col"><label class="form-label" style="color: #DEAE05;">CheckIn</label>
+                        <div class="input-group" style="border-style: none;"><input class="form-control" [(ngModel)]="checkin" type="date" id="checkin" min={{date}} ngModel name="checkin" style="border-style: none;" /><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-calendar-alt" style="color: rgb(255,255,255);"></i></span></div>
+                    </div>
+                    <div class="col"><label class="form-label" style="color: #DEAE05;">CheckOut</label>
+                        <div class="input-group" style="border-style: none;"><input class="form-control" type="date" min={{checkin}} id="checkout" ngModel name="checkout" style="border-style: none;" /><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-calendar-alt" style="color: rgb(255,255,255);"></i></span></div>
+                    </div>
+                </div><button class="btn btn-sm d-block submit-button w-100" type="submit" style="background: #DEAE05;border-radius: 5px;"><i class="fa fa-circle-o-notch"></i> Submit</button>
+            </form>
+        </div>
+    </div>
+ 
+<app-footer></app-footer>
+
