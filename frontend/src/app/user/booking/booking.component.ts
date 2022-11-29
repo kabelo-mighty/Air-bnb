@@ -2,6 +2,7 @@ import { HttpBackend } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BnbService } from 'src/app/service/bnb.service';
+import { JwtService } from 'src/app/service/jwt.service';
 
 @Component({
   selector: 'app-booking',
@@ -14,12 +15,24 @@ import { BnbService } from 'src/app/service/bnb.service';
   export class BookingComponent implements OnInit {
     info:any;
     inf=[];
-   
+    user = {
+      user_id: '',
+      firstname:'',
+      lastname:'',
+      email:''
+
+  }
     public isVisible: boolean = false;
-   constructor( private bnbService:BnbService,private router:Router) { }
+    constructor(private route: Router,private bnbService:BnbService,private jwtService : JwtService,private router:Router) { }
  
    ngOnInit(): void {
-    this.bnbService.book(this.info).subscribe(res=>{
+
+    this.user= this.jwtService.getDetails(localStorage.getItem('token')).data[0];
+    let id=this.user.user_id
+  
+
+
+    this.bnbService.book(id).subscribe(res=>{
  
  
      this.info=res;

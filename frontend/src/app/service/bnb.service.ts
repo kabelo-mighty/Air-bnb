@@ -16,12 +16,14 @@ export class BnbService {
   baseUrlRoom = "http://localhost:3000/rooms"
   baseUrlRoomById = "http://localhost:3000/rooms/"
   baseUrlBook= "http://localhost:3000/books"
+  baseUrluser= "http://localhost:3000/currentUser/"
   baseUrlBookId = "http://localhost:3000/books/"
   baseUrlMakeBook = "http://localhost:3000/makeBooking/"
   baseUrlArchive = "http://localhost:3000/archiveBooking"
   baseUrlGetoneBook = "http://localhost:3000/viewbook/"
 
   baseUrlupdateDate = "http://localhost:3000/updateDate/"
+  baseUrlupdateprofile = "http://localhost:3000/updateprofile"
   baseUrlremoveroom = "http://localhost:3000/removeroom"
   baseUrladdroom = "http://localhost:3000/addroom"
   baseUrlupdateroom="http://localhost:3000/updateroom/"
@@ -34,7 +36,25 @@ baseUrlapprove="http://localhost:3000/approvebooking"
   baseUrlcountC="http://localhost:3000/countcustomer"
   baseUrlcountR="http://localhost:3000/countrooms"
 
-  //close
+ 
+
+//===================================================================
+  //count for user
+  baseUrlcountUserB="http://localhost:3000/countmybooking/"
+  baseUrlcountUserP="http://localhost:3000/countpending/"
+  baseUrlcountUserH="http://localhost:3000/counthistory/"
+
+  countmybooking(id: any){
+    return this.http.get(this.baseUrlcountUserB+id);
+  }
+  countpending(id: any){
+    return this.http.get(this.baseUrlcountUserP+id);
+  }
+  counthistory(id: any){
+    return this.http.get(this.baseUrlcountUserH+id);
+  }
+
+  //================================================================
   create(data: any) {
     return this.http.post(this.baseUrlRegister, data);
   }
@@ -59,6 +79,9 @@ baseUrlapprove="http://localhost:3000/approvebooking"
 
   currentRoom(id: any){
     return this.http.get(this.baseUrlRoomById+id);
+  }
+  currentUser(id: any){
+    return this.http.get(this.baseUrluser+id);
   }
   currentbook(id: any){
     return this.http.get(this.baseUrlBookId+id);
@@ -98,6 +121,10 @@ baseUrlapprove="http://localhost:3000/approvebooking"
   updateroom(id:any,data: any){
     return this.http.put(`${this.baseUrlupdateroom}/${id}`, {data});
   }
+    //update profile
+    updateprofile(id:any,data: any){
+      return this.http.put(`${this.baseUrlupdateprofile}/${id}`, {data});
+    }
   //get all bookings
 
   allbooks(data:any){ 

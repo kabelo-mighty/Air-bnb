@@ -51,10 +51,22 @@ app.get('/viewbook/:id',db.viewbook)
 app.get('/countbooking',db.countbooking)
 app.get('/countcustomer',db.countcustomer)
 app.get('/countrooms',db.countrooms)
+app.get('/currentUser/:id',db.currentUser)
+//count admin
+app.get('/book/:id',db.currentbook)
+app.get('/viewbook/:id',db.viewbook)
+app.get('/books/:id',db.currentbook)
+//count user
+app.get('/countmybooking/:id',db.countmybooking)
+app.get('/countpending/:id',db.countpending)
+app.get('/counthistory/:id',db.counthistory)
+
+
 //put
 app.put('/approvebooking/:id',db.approvebooking)
 app.put('/updateDate/:id',db.updateDate)
 app.put('/updateroom/:id',db.updateroom)
+app.put('/updateprofile/:id',db.updateprofile)
 app.put('/archiveBooking/:id',db.archiveBooking)
 app.put('/cancelBooking/:id',db.cancelBooking)
 //delete

@@ -165,6 +165,28 @@ const message = (req, res) => {
               
                       
                     }}
+
+                    //get user by id
+                    const currentUser = (req, res) => {
+    
+    
+                      {
+                      const id=parseInt(req.params.id)
+                              
+                             con.query('select * from user where user_id= ?',[id], function (error, results, fields) 
+                              {
+                                   if(error){
+                                    res.send('data not found')
+                      
+                                   }else{
+                                    res.send(results)
+                                   }
+                      
+                              })
+                      
+                      
+                              
+                            }}
                   //archive booking
 
 
@@ -420,7 +442,32 @@ const removeroom = (req, res) => {
     
             
           }}
-          //update room
+          //update profile
+
+          const updateprofile= (req, res) => {
+
+
+            const id=parseInt(req.params.id)
+            const {firstname,lastname,email} = req.body; 
+            var profilevalue={
+
+             "firstname":firstname,
+             "lastname":lastname,
+             "email":email
+           
+          }
+           con.query('UPDATE User SET ? WHERE user_id= ?',[profilevalue,id], function (error, results, fields) 
+            {
+                 if(error){
+                  res.send('data not sent')
+    
+                 }else{
+                  res.send(' Profile Updated succesfully!')
+                 }
+    
+            })
+          }
+          //
           const updateroom= (req, res) => {
 
 
@@ -508,6 +555,73 @@ const removeroom = (req, res) => {
         
                 
               }} 
+//============================================================================
+//count my booking
+
+
+const countmybooking = (req, res) => {
+  const id=parseInt(req.params.id)
+    
+  {
+      
+          
+         con.query('select count(*) as countmybooking from booking where approved=0 and  user_id = ?',[id], function (error, results, fields) 
+          {
+               if(error){
+                res.send('data not found')
+  
+               }else{
+                res.send(results)
+               }
+  
+          })
+  
+  
+          
+        }} 
+        //count pending bookings
+        const countpending = (req, res) => {
+          const id=parseInt(req.params.id)
+            
+          {
+              
+                  
+                 con.query('select count(*) as countpending from booking where approved=0 and user_id = ?',[id], function (error, results, fields) 
+                  {
+                       if(error){
+                        res.send('data not found')
+          
+                       }else{
+                        res.send(results)
+                       }
+          
+                  })
+          
+          
+                  
+                }} 
+                   //count pending bookings
+        const counthistory = (req, res) => {
+          const id=parseInt(req.params.id)
+            
+          {
+              
+                  
+                 con.query('select count(*) as counthistory from booking where approved=1 and user_id = ?',[id], function (error, results, fields) 
+                  {
+                       if(error){
+                        res.send('data not found')
+          
+                       }else{
+                        res.send(results)
+                       }
+          
+                  })
+          
+          
+                  
+                }} 
+//============================================================================
                     //cancel booking
                     const cancelBooking = (req, res) => {
                   
@@ -545,6 +659,7 @@ module.exports = {
   makeBooking,
   archiveBooking,
   viewbook,
-  updateDate,removeroom,addroom,updateroom,allbooks,countbooking,countcustomer,countrooms,approvebooking,cancelBooking
+  updateDate,removeroom,addroom,updateroom,allbooks,countbooking,countcustomer,countrooms,approvebooking,cancelBooking,updateprofile,currentUser,
+  countmybooking,countpending,counthistory
   
 }    

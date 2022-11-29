@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { BnbService } from 'src/app/service/bnb.service';
 import { JwtService } from 'src/app/service/jwt.service';
 
 @Component({
@@ -7,9 +9,50 @@ import { JwtService } from 'src/app/service/jwt.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  ngOnInit(): void {
-    
+  
+  constructor(private route: Router,private bnbservice:BnbService,private jwtService : JwtService) { }
+  tittle:any;
+  data1:any;
+  init :any;
+
+  nobookingpending:any;
+  nomybooking:any;
+  nohistory:any;
+user = {
+      user_id: '',
+      firstname:'',
+      lastname:'',
+      email:''
+
   }
+
+  ngOnInit(): void {
+
+ 
+    this.user= this.jwtService.getDetails(localStorage.getItem('token')).data[0];
+    let id=this.user.user_id
+    console.log(id)
+//count number of bookings 
+    this.bnbservice.countmybooking(id).subscribe((data)=>{
+      this.nomybooking= data;
+      console.log(this.nomybooking)
+   
+      })
+      //count pending booking
+      this.bnbservice.countpending(id).subscribe((data)=>{
+        this.nobookingpending= data;
+        console.log(this.nobookingpending)
+     
+        })
+        //count history
+        this.bnbservice.counthistory(id).subscribe((data)=>{
+          this.nohistory= data;
+          console.log(this.nohistory)
+       
+          })
+
+  }
+
 
   
 
