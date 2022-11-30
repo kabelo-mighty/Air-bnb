@@ -564,7 +564,7 @@ const countmybooking = (req, res) => {
   {
       
           
-         con.query('select count(*) as countmybooking from booking where approved=0 and  user_id = ?',[id], function (error, results, fields) 
+         con.query('select count(*) as countmybooking from booking where approved=0 and archive=0 and  user_id = ?',[id], function (error, results, fields) 
           {
                if(error){
                 res.send('data not found')
@@ -585,7 +585,7 @@ const countmybooking = (req, res) => {
           {
               
                   
-                 con.query('select count(*) as countpending from booking where approved=0 and user_id = ?',[id], function (error, results, fields) 
+                 con.query('select count(*) as countpending from booking where approved=0 and archive=0 and user_id = ?',[id], function (error, results, fields) 
                   {
                        if(error){
                         res.send('data not found')

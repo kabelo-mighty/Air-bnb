@@ -9,12 +9,13 @@
 </div>
 <div class="container">
     <div class="row" >
-        <div class="col-md-4" *ngFor="let e of info;">
+        
+        <div class="col-md-3" *ngFor="let e of info;">
             <br>
             <a (click)= viewroom(e) style="text-decoration: none;"><div class="card-group" style="border-radius: 10px;">
                 <div class="card" style="border-radius: 10px;"><img class="card-img-top w-100 d-block" src="{{e.img_url}}" style="border-top-left-radius: 10px;border-top-right-radius: 10px;height: 140px;">
-                    <div class="card-body" style="background: #262626;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;height: 70px;">
-                        <h4 class="card-title" style="font-size: 15px;color: #DEAE05;">{{e.title}}<span class="float-end" style="color: #DEAE05;">R{{e.price}}</span></h4>
+                    <div class="card-body" style="background: #DEAE05;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;height: 70px;">
+                        <h4 class="card-title" style="font-size: 15px;color: #262626;">{{e.title}}<span class="float-end" style="color: #DEAE05;">R{{e.price}}</span></h4>
                     </div>
                 </div>
             </div></a>
@@ -23,5 +24,13 @@
     </div>
     
 </div>
+
+  
+
+
+
+
+
+
 <app-footer></app-footer>
 
