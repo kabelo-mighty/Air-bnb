@@ -32,7 +32,7 @@ import { JwtService } from 'src/app/service/jwt.service';
   
 
 
-    this.bnbService.book(id).subscribe(res=>{
+    this.bnbService.currentbook(id).subscribe(res=>{
  
  
      this.info=res;

@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class RoombookinComponent implements OnInit {
   
   checkin='';
+  checkout='';
   date:string="";
   Books:any;
   yyyy : any = new Date().getFullYear();
@@ -27,12 +28,20 @@ user_id:'',
 checkin:'',
 checkout:''
 }
+
 public isVisible: boolean = false;
 constructor(private bnbservice:BnbService,private http:HttpClient,private router:Router) { }
 
   ngOnInit(): void {
 
   let id=localStorage.getItem('room_id');
+
+
+
+  this.date = this.yyyy+"-"+ this.mm + "-" + this.dd;
+  console.log(this.date )
+
+
 
   this.bnbservice.currentRoom(id).subscribe((data)=>{
    this.Rooms= data;
@@ -43,25 +52,34 @@ constructor(private bnbservice:BnbService,private http:HttpClient,private router
 
 
   ngDoCheck() {
-    console.log('Running change detection ', Date.now());
+    //console.log('Running change detection ', Date.now());
   }
   
   onSubmit(data:any){
 
-    this.booking.checkin = data.value.checkin;
-    this.booking.checkout = data.value.checkout;
-    this.booking.room_id = JSON.stringify(localStorage.getItem('room_id'));
-    this.booking.user_id = JSON.stringify(localStorage.getItem('user_id'));
- 
+ let rId= this.booking.room_id = JSON.stringify(localStorage.getItem('room_id'));
+ let UId= this.booking.room_id = JSON.stringify(localStorage.getItem('user_id'));
 
-    this.http.post('http://localhost:3000/makeBooking/',this.booking)
+
+
+
+    var bookroom={
+      "user_id":localStorage.getItem('user_id'),
+      "room_id":localStorage.getItem('room_id'),
+      "checkin":data.checkin,
+      "checkout":data.checkout
+    }
+
+   console.log(bookroom)
+
+    this.http.post('http://localhost:3000/makeBooking',bookroom,{responseType:'text'})
     .subscribe((results)=>{
   if (this.isVisible) { 
           return;
         } 
         this.isVisible = true;
-        setTimeout(()=> this.isVisible = false,850)
-
+        setTimeout(()=> this.isVisible = false,1500)
+        setTimeout(()=> this.router.navigate(['/booking']),1600)
 
       })
     

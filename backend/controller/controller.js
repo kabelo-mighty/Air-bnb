@@ -249,9 +249,8 @@ const message = (req, res) => {
                     
                             var bookvalue={
                     
-                             
-                              "room_id":room_id,
                               "user_id":user_id,
+                              "room_id":room_id,
                               "checkin":checkin, 
                               "checkout":checkout
                             }
@@ -332,7 +331,7 @@ const message = (req, res) => {
               {
               const id=parseInt(req.params.id)
                       
-                     con.query('select * from booking  where user_id= ?',[id], function (error, results, fields) 
+                     con.query('select * from booking,room  where booking.room_id=room.room_id and booking.archive=0 and user_id= ?',[id], function (error, results, fields) 
                       {
                            if(error){
                             res.send('data not found')

@@ -101,7 +101,7 @@ baseUrlapprove="http://localhost:3000/approvebooking"
     return this.http.put(`${this.baseUrlupdateDate}/${id}`, {data});
   }
 
-  makeBooking(data:any){
+  makeBooking(UId:any,rId:any,data:any){
     return this.http.post(this.baseUrlMakeBook, data);
   }
   //delete room
