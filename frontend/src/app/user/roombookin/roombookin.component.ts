@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./roombookin.component.scss']
 })
 export class RoombookinComponent implements OnInit {
-  
+
   checkin='';
   checkout='';
   date:string="";
@@ -38,10 +38,10 @@ constructor(private bnbservice:BnbService,private http:HttpClient,private router
 
 
 
-  this.date = this.yyyy+"-"+ this.mm + "-" + this.dd;
-  console.log(this.date )
+  this.date = this.yyyy+"-"+ this.mm + "-" +this.dd;
+  console.log(this.dd)
 
-
+  
 
   this.bnbservice.currentRoom(id).subscribe((data)=>{
    this.Rooms= data;

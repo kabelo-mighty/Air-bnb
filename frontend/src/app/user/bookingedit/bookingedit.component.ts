@@ -28,7 +28,7 @@ export class BookingeditComponent implements OnInit {
   
 
       this.date = this.yyyy+"-"+ this.mm + "-" + this.dd;
-      console.log(this.date )
+     // console.log(this.date )
   
     let id=localStorage.getItem('booking_id');
   

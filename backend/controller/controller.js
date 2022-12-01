@@ -564,7 +564,7 @@ const countmybooking = (req, res) => {
   {
       
           
-         con.query('select count(*) as countmybooking from booking where approved=0 and archive=0 and  user_id = ?',[id], function (error, results, fields) 
+         con.query('select count(*) as countmybooking from booking where archive=0 and  user_id = ?',[id], function (error, results, fields) 
           {
                if(error){
                 res.send('data not found')
@@ -599,7 +599,7 @@ const countmybooking = (req, res) => {
           
                   
                 }} 
-                   //count pending bookings
+                   //count history bookings
         const counthistory = (req, res) => {
           const id=parseInt(req.params.id)
             
@@ -620,6 +620,28 @@ const countmybooking = (req, res) => {
           
                   
                 }} 
+
+                const countcancelbooking = (req, res) => {
+                  const id=parseInt(req.params.id)
+                    
+                  {
+                      
+                          
+                         con.query('select count(*) as countcancelbooking from booking where approved=2 and user_id = ?',[id], function (error, results, fields) 
+                          {
+                               if(error){
+                                res.send('data not found')
+                  
+                               }else{
+                                res.send(results)
+                               }
+                  
+                          })
+                  
+                  
+                          
+                        }} 
+                
 //============================================================================
                     //cancel booking
                     const cancelBooking = (req, res) => {
@@ -659,6 +681,6 @@ module.exports = {
   archiveBooking,
   viewbook,
   updateDate,removeroom,addroom,updateroom,allbooks,countbooking,countcustomer,countrooms,approvebooking,cancelBooking,updateprofile,currentUser,
-  countmybooking,countpending,counthistory
+  countmybooking,countpending,counthistory,countcancelbooking
   
 }    

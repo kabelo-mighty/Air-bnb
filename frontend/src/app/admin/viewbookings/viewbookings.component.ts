@@ -20,6 +20,11 @@ export class ViewbookingsComponent implements OnInit {
   ngOnInit(): void {
 
 
+
+
+
+
+    
     this.bnbService.allbooks(this.info).subscribe(res=>{
  
  

@@ -43,7 +43,7 @@ baseUrlapprove="http://localhost:3000/approvebooking"
   baseUrlcountUserB="http://localhost:3000/countmybooking/"
   baseUrlcountUserP="http://localhost:3000/countpending/"
   baseUrlcountUserH="http://localhost:3000/counthistory/"
-
+  baseUrlcountUserC="http://localhost:3000/countcancelbooking/"
   countmybooking(id: any){
     return this.http.get(this.baseUrlcountUserB+id);
   }
@@ -52,6 +52,9 @@ baseUrlapprove="http://localhost:3000/approvebooking"
   }
   counthistory(id: any){
     return this.http.get(this.baseUrlcountUserH+id);
+  }
+  countcancelbooking(id: any){
+    return this.http.get(this.baseUrlcountUserC+id);
   }
 
   //================================================================

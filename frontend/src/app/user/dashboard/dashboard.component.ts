@@ -18,6 +18,8 @@ export class DashboardComponent implements OnInit {
   nobookingpending:any;
   nomybooking:any;
   nohistory:any;
+  cancelbooking:any;
+
 user = {
       user_id: '',
       firstname:'',
@@ -48,6 +50,13 @@ user = {
         this.bnbservice.counthistory(id).subscribe((data)=>{
           this.nohistory= data;
           console.log(this.nohistory)
+       
+          })
+          //cancel booking
+           
+        this.bnbservice.countcancelbooking(id).subscribe((data)=>{
+          this.cancelbooking= data;
+          console.log(this.cancelbooking)
        
           })
 

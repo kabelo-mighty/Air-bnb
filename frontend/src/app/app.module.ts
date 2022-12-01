@@ -27,7 +27,7 @@ import { ViewbookingsComponent } from './admin/viewbookings/viewbookings.compone
 import { DashboardadminComponent } from './admin/dashboardadmin/dashboardadmin.component';
 import { ProfileadminComponent } from './admin/profileadmin/profileadmin.component';
 import { NavbaradminComponent } from './admin/navbaradmin/navbaradmin.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 RouterModule
@@ -58,7 +58,7 @@ RouterModule
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,HttpClientModule,FormsModule,ReactiveFormsModule,
+    AppRoutingModule,HttpClientModule,FormsModule,ReactiveFormsModule,NgxPaginationModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },

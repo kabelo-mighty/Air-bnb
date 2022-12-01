@@ -16,7 +16,9 @@
     "jsonwebtoken": "^8.5.1",
     "md5": "^2.3.0",
     "mysql2": "^3.0.0-rc.1",
+    "ngx-pagination": "^6.0.3",
     "nodemon": "^2.0.20",
+    "pagination": "^0.4.6",
     "util": "^0.12.5"
   }
 }

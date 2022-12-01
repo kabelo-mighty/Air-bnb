@@ -60,8 +60,7 @@ app.get('/books/:id',db.currentbook)
 app.get('/countmybooking/:id',db.countmybooking)
 app.get('/countpending/:id',db.countpending)
 app.get('/counthistory/:id',db.counthistory)
-
-
+app.get('/countcancelbooking/:id',db.countcancelbooking)
 //put
 app.put('/approvebooking/:id',db.approvebooking)
 app.put('/updateDate/:id',db.updateDate)
