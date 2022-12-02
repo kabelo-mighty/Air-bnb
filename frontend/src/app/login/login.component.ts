@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { BnbService } from '../service/bnb.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JwtService } from '../service/jwt.service';
+import { GuardService } from '../service/guard.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   private _auth: any;
   public isVisible: boolean = false;
   public Visible: boolean = false;
-  constructor(private http:HttpClient,private formBuilder: FormBuilder,private router:Router, private jwtService : JwtService) { }
+  guardService: any;
+  constructor(private http:HttpClient,private formBuilder: FormBuilder,private router:Router, private jwtService : JwtService, guaedService : GuardService) { }
 
   ngOnInit(): void {
 
@@ -32,6 +34,7 @@ export class LoginComponent implements OnInit {
   onSubmit(data:any){
    //check
     //connect to server
+    this.guardService.login();
     this.http.post('http://localhost:3000/login',data)
     .subscribe((results:any)=>{
 

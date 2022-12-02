@@ -28,6 +28,8 @@ import { DashboardadminComponent } from './admin/dashboardadmin/dashboardadmin.c
 import { ProfileadminComponent } from './admin/profileadmin/profileadmin.component';
 import { NavbaradminComponent } from './admin/navbaradmin/navbaradmin.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { GuardService } from './service/guard.service';
+import { AuthService } from './service/auth.service';
 
 
 RouterModule
@@ -66,7 +68,7 @@ RouterModule
     ,{path:'addroom',component:AddroomComponent}
     ]),
   ],
-  providers: [],
+  providers: [GuardService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
