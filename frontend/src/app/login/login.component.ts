@@ -20,7 +20,16 @@ export class LoginComponent implements OnInit {
   public isVisible: boolean = false;
   public Visible: boolean = false;
   guardService: any;
-  constructor(private http:HttpClient,private formBuilder: FormBuilder,private router:Router, private jwtService : JwtService, guaedService : GuardService) { }
+
+
+  user = {
+    user_id: '',
+    firstname:'',
+    lastname:'',
+    email:''
+
+}
+  constructor(private http:HttpClient,private formBuilder: FormBuilder,private router:Router, private jwtService : JwtService,private guardservice : GuardService) { }
 
   ngOnInit(): void {
 
@@ -34,24 +43,40 @@ export class LoginComponent implements OnInit {
   onSubmit(data:any){
    //check
     //connect to server
-    this.guardService.login();
+    this.guardservice.login();
+
+
     this.http.post('http://localhost:3000/login',data)
     .subscribe((results:any)=>{
 
       localStorage.setItem('token',results.token);
- 
+
       
-      // if (res.status) { 
-       
-      //   this._auth.setDataInLocalStorage('userData', JSON.stringify(res.data));  
-      //   this._auth.setDataInLocalStorage('token', res.token);  
-      //   this.router.navigate(['dashboard']);
-      // }
  
-      if(results.token!=null){
+    if(results.token!=null){
+
+    this.user= this.jwtService.getDetails(localStorage.getItem('token')).data[0];
+    let id=this.user.user_id
+    console.log(id);
       
-       //alert('succesfully loged in')
-       if(this.isVisible) { 
+     if(this.user.user_id < '3')
+     {
+
+
+      if(this.isVisible) { 
+        return;
+      } 
+      this.isVisible = true;
+      setTimeout(()=> this.isVisible = false,850)
+
+      setTimeout(()=> this.router.navigate(['/dashboardadmin']),900)
+
+     }else
+     {
+
+     
+      
+      if(this.isVisible) { 
         return;
       } 
       this.isVisible = true;
@@ -59,8 +84,8 @@ export class LoginComponent implements OnInit {
 
       setTimeout(()=> this.router.navigate(['/dashboard']),900)
 
-       //console.warn(results)
-       //localStorage.setItem("secret",results);
+
+     }
        
        
       }

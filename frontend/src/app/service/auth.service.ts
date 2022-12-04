@@ -20,7 +20,7 @@ export class AuthService implements CanActivate{
       return true
     }else{
       this.router.navigate(['/homepage'])
-      return false
+      return true
     }
   }
 }

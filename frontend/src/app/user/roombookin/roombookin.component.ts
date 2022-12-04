@@ -3,6 +3,7 @@ import { BnbService } from 'src/app/service/bnb.service';
 import { Component, OnChanges, DoCheck, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-roombookin',
@@ -28,11 +29,25 @@ user_id:'',
 checkin:'',
 checkout:''
 }
+//spinner
+typeSelected:string;
 
 public isVisible: boolean = false;
-constructor(private bnbservice:BnbService,private http:HttpClient,private router:Router) { }
+
+constructor(private bnbservice:BnbService,private http:HttpClient,private router:Router,private spinner: NgxSpinnerService) {
+
+  this.typeSelected = 'ball-fussion';
+ }
 
   ngOnInit(): void {
+    
+ 
+    this.spinner.show();
+
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 5000); 
+
 
   let id=localStorage.getItem('room_id');
 
@@ -77,6 +92,8 @@ constructor(private bnbservice:BnbService,private http:HttpClient,private router
   if (this.isVisible) { 
           return;
         } 
+
+  
         this.isVisible = true;
         setTimeout(()=> this.isVisible = false,1500)
         setTimeout(()=> this.router.navigate(['/booking']),1600)

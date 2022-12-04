@@ -13,7 +13,7 @@ export class GuardService{
 
   IsAuthenticated(){
 
-    if(sessionStorage.getItem('logginToken') != null)
+    if(localStorage.getItem('token') != null)
     {
       return true;
     }

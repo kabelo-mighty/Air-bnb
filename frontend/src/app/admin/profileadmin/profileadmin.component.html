@@ -1,6 +1,6 @@
 <app-navbaradmin></app-navbaradmin>
 
-<div class="container-fluid">
+<div class="container-fluid" *ngFor="let e of person;">
     <div class="d-sm-flex justify-content-between align-items-center mb-4">
         <h3 class="text-dark mb-0" style="font-size: 16px;font-weight: bold;">Customer</h3>
     </div>
@@ -11,14 +11,26 @@
                 <h1 class="float-none"></h1>
                 <p class="d-flex justify-content-center" style="color: rgb(255,255,255);"><a class="d-block float-start" href="#" style="color: rgb(255,255,255);"></a><strong>Upadate Profile</strong></p>
             </div>
-            <form class="custom-form" style="background: rgba(0,0,0,0.76);border-style: none;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;"><label class="form-label" style="color: #DEAE05;">Firstname</label>
-                <div class="input-group" style="border-style: none;"><input class="form-control" type="text" style="border-style: none;"><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-user" style="color: rgb(255,255,255);"></i></span></div><label class="form-label" style="color: #DEAE05;">Lastname</label>
-                <div class="input-group" style="border-style: none;"><input class="form-control" type="text" style="border-style: none;"><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-user" style="color: rgb(255,255,255);"></i></span></div><label class="form-label" style="color: #DEAE05;">Email</label>
-                <div class="input-group" style="border-style: none;"><input class="form-control" type="text" style="border-style: none;"><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-envelope" style="color: rgb(255,255,255);"></i></span></div><button class="btn btn-sm d-block submit-button w-100" type="button" style="background: #DEAE05;border-radius: 5px;"><i class="fa fa-circle-o-notch"></i>&nbsp;Save</button>
+            <form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)" class="custom-form" style="background: rgba(0,0,0,0.76);border-style: none;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
+                <label class="form-label" style="color: #DEAE05;">Firstname</label>
+                <div class="input-group" style="border-style: none;">
+                    <input class="form-control" [(ngModel)]="e.firstname" type="text"   id="firstname" ngModel name="firstname"  style="border-style: none;"><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-user" style="color: rgb(255,255,255);"></i></span></div>
+                <label class="form-label" style="color: #DEAE05;">Lastname</label>
+                <div class="input-group" style="border-style: none;"><input class="form-control" type="text"  id="lastname" ngModel name="lastname" [(ngModel)]="e.lastname" style="border-style: none;"><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-user" style="color: rgb(255,255,255);"></i></span></div>
+                <label class="form-label" style="color: #DEAE05;">Email</label>
+                <div class="input-group" style="border-style: none;"><input class="form-control" type="text" [(ngModel)]="e.email" value="{{e.email}}" id="email1" ngModel name="email1" style="border-style: none;" disabled><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-envelope" style="color: rgb(255,255,255);"></i></span></div>
+
+                <input style="display: none;" [(ngModel)]="e.email" id="email" ngModel name="email"  >
+                <button class="btn btn-sm d-block submit-button w-100" type="submit" style="background: #DEAE05;border-radius: 5px;"><i class="fa fa-circle-o-notch"></i>&nbsp;Save</button>
             </form>
         </div>
     </div>
 </div>
 
+<!--------arlet-->
 
+<div class="updated" [class.visible]="isVisible"> 
+    <i class="fa fa-exclamation-circle" style="font-size: 20px;"></i> Profile successfully updated.
+</div>
+<!-----------------> 
 <app-footer></app-footer>

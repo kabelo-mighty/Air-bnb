@@ -1,19 +1,63 @@
 
 <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background: #262626;">
-    <div class="container"><a class="navbar-brand" href="#" style="font-size: 20px;color: rgb(255,255,255);"><i class="fas fa-door-open" style="color: #DEAE05;"></i>Laitalia<span style="color: #DEAE05;">BnB</span></a><button data-bs-toggle="collapse" data-bs-target="#navcol-1" class="navbar-toggler" style="border-style: none;"><span class="visually-hidden">Toggle navigation</span><i class="material-icons" style="color: rgb(222,174,7);">menu</i></button>
+    <div class="container"><a class="navbar-brand" style="font-size: 20px;color: rgb(255,255,255);"><i class="fas fa-door-open" style="color: #DEAE05;"></i>Laitalia<span style="color: #DEAE05;">BnB</span></a><button data-bs-toggle="collapse" data-bs-target="#navcol-1" class="navbar-toggler" style="border-style: none;"><span class="visually-hidden">Toggle navigation</span><i class="material-icons" style="color: rgb(222,174,7);">menu</i></button>
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link"  routerLink="/dashboard" style="color: rgb(255,255,255);">Dashboard</a></li>
-                <li class="nav-item dropdown"><a aria-expanded="false" data-bs-toggle="dropdown" class="dropdown-toggle nav-link"   style="color: rgb(255,255,255);">Bookings </a>
-                    <div class="dropdown-menu" style="margin-top: 21px;background: #262626;"><a class="dropdown-item"  routerLink="/room" style="color: rgb(222,174,7);">view rooms</a><a class="dropdown-item" routerLink="/booking" style="color: rgb(222,174,7);">my bookings</a></div>
+                <li class="nav-item"><a class="nav-link"  routerLink="/dashboard" style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-tachometer"></i> Dashboard</a></li>
+                <li class="nav-item dropdown"><a aria-expanded="false" data-bs-toggle="dropdown" class="dropdown-toggle nav-link"   style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-book"></i> Bookings </a>
+                    <div class="dropdown-menu" style="margin-top: 21px;background: #262626;"><a class="dropdown-item"    routerLink="/room" style="color: rgb(222,174,7);">view rooms</a><a class="dropdown-item" routerLink="/booking" style="color: rgb(222,174,7);">my bookings</a></div>
                 </li>
-                <li class="nav-item dropdown"><a aria-expanded="false" data-bs-toggle="dropdown" class="dropdown-toggle nav-link"   style="color: rgb(255,255,255);">Account </a>
+               
+                <li class="nav-item dropdown no-arrow mx-1">
+                    <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">7</span><i class="fas fa-envelope fa-fw"></i></a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
+                            <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image me-3"><img class="rounded-circle" src="avatars/avatar4.jpeg" />
+                                    <div class="bg-success status-indicator"></div>
+                                </div>
+                                <div class="fw-bold">
+                                    <div class="text-truncate"><span>Hi there! I am wondering if you can help me with a problem I&#39;ve been having.</span></div>
+                                    <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
+                                </div>
+                            </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image me-3">
+                                    <div class="status-indicator"></div>
+                                </div>
+                                <div class="fw-bold">
+                                    <div class="text-truncate"><span>I have the photos that you ordered last month!</span></div>
+                                    <p class="small text-gray-500 mb-0">Jae Chun - 1d</p>
+                                </div>
+                            </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image me-3">
+                                    <div class="bg-warning status-indicator"></div>
+                                </div>
+                                <div class="fw-bold">
+                                    <div class="text-truncate"><span>Last month&#39;s report looks great, I am very happy with the progress so far, keep up the good work!</span></div>
+                                    <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
+                                </div>
+                            </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image me-3">
+                                  
+                                </div>
+                                <div class="fw-bold">
+                                    <div class="text-truncate"><span>Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren&#39;t good...</span></div>
+                              
+                                </div>
+                            </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                        </div>
+                    </div>
+                    <div class="shadow dropdown-list dropdown-menu dropdown-menu-end" aria-labelledby="alertsDropdown"></div>
+                </li>
+
+
+                <li class="nav-item dropdown"><a aria-expanded="false" data-bs-toggle="dropdown" class="dropdown-toggle nav-link"   style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-user"></i> Account </a>
                     <div class="dropdown-menu" style="margin-top: 21px;background: rgb(38,38,38);"><a class="dropdown-item"  routerLink="/profile" style="color: #deae07;">profile</a><a class="dropdown-item" (click)="onClick()" style="color: #deae07;">Logout</a></div>
                 </li>
               
-                <li class="nav-item"><a class="nav-link shadow-none" href="#" style="color: rgb(255,255,255);border: 1px none rgb(222,174,7) ;"><i class="fa fa-user-circle" style="color: #DEAE05;"></i>&nbsp;{{user.firstname}},{{init}}</a></li>
+                <li class="nav-item"><a class="nav-link shadow-none"  style="color: rgb(255,255,255);border: 1px none rgb(222,174,7) ;"><i class="fa fa-user-circle" style="color: #DEAE05;"></i>&nbsp;{{user.firstname}} {{user.lastname}}</a></li>
             </ul>
         </div>
     </div>
 </nav>
+<br>
 <router-outlet></router-outlet>

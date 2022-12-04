@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -32,6 +33,7 @@ import { GuardService } from './service/guard.service';
 import { AuthService } from './service/auth.service';
 
 
+
 RouterModule
 @NgModule({
   declarations: [
@@ -60,7 +62,7 @@ RouterModule
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,HttpClientModule,FormsModule,ReactiveFormsModule,NgxPaginationModule,
+    AppRoutingModule,HttpClientModule,FormsModule,ReactiveFormsModule,NgxPaginationModule,NgxSpinnerModule,BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },

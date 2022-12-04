@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BnbService } from 'src/app/service/bnb.service';
 import { JwtService } from 'src/app/service/jwt.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,7 @@ import { JwtService } from 'src/app/service/jwt.service';
 })
 export class DashboardComponent implements OnInit {
   
-  constructor(private route: Router,private bnbservice:BnbService,private jwtService : JwtService) { }
+  constructor(private route: Router,private bnbservice:BnbService,private jwtService : JwtService,private spinner: NgxSpinnerService) { }
   tittle:any;
   data1:any;
   init :any;
@@ -30,7 +31,13 @@ user = {
 
   ngOnInit(): void {
 
- 
+    
+    this.spinner.show();
+
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 5000); 
+
     this.user= this.jwtService.getDetails(localStorage.getItem('token')).data[0];
     let id=this.user.user_id
     console.log(id)

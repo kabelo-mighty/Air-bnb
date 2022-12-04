@@ -6,48 +6,133 @@
     <i class="fa fa-exclamation-circle" style="font-size: 20px;"></i> Booking dates upadted.
 </div>
 <!-----------------> 
-<div class="container-fluid" *ngFor="let e of Books;">
- 
-    <div class="d-sm-flex justify-content-between align-items-center mb-4">
-     
-    </div>
-    <div></div>
-    <div class="row login-form">
-
-        <div class="col-md-4 offset-md-4">
-            <h3 class="text-dark mb-0" style="font-size: 16px;font-weight: bold;">{{e.title}}</h3>
-            <hr>
-            <div></div><img class="img-fluid" style="height: auto;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;border-top-left-radius: 10px;border-top-right-radius: 10px;" src="{{e.img_url}}" />
-            <br><br>
-            <p class="text-secondary" style="text-align: left;font-size: 14px;font-family: 'Open Sans', sans-serif;line-height: 22px;color: rgb(9,9,10);margin-left: 24px;"> {{e.description}} </p>
-            
-           
-            <hr>
-            <h3 class="text-dark mb-0" style="font-size: 16px;font-weight: bold;">Booking Dates Details</h3>
-            <hr>
-            <p class="text-dark mb-0" style="font-size: 14px;"><i style="color: rgb(108, 249, 108);"class="fas fa-calendar-alt"></i>  Current-Check In Date : <strong>{{e.checkin| date: 'dd/MM/yyyy'}}</strong></p>
-            
-            <p class="text-dark mb-0" style="font-size: 14px;"><i style="color: rgb(232, 60, 60);" class="fas fa-calendar-alt"></i>  Current-Check Out Date : <strong>{{e.checkout| date: 'dd/MM/yyyy'}}</strong></p>
-            <hr>
-
-            <br>
-            <div style="height: 24px;background: #DEAE05;border-top-left-radius: 10px;border-top-right-radius: 10px;">
-                <h1 class="float-none"></h1>
-                <p class="d-flex justify-content-center" style="color: rgb(255,255,255);"><a class="d-block float-start" href="#" style="color: rgb(255,255,255);"></a><strong>Update Booking Dates</strong></p>
+<div class="container-fluid">
+    <div class="container" *ngFor="let e of Books;">
+        <div class="row">
+            <div class="col-lg-6 col-xl-6 mb-4">
+                <div class="card shadow-none h-100" style="border-style: none;"><a href="#"></a>
+                    <div data-bs-ride="carousel" class="carousel slide" id="carousel-1" style="margin-top: 79px;">
+                        <div class="carousel-inner">
+                            <div class="carousel-item"><img class="w-100 d-block" src="{{e.img_url}}" alt="Slide Image" /></div>
+                            <div class="carousel-item"><img class="w-100 d-block" src="{{e.img_url1}}" alt="Slide Image" /></div>
+                            <div class="carousel-item active"><img class="w-100 d-block" src="{{e.img_url2}}" alt="Slide Image" /></div>
+                        </div>
+                        <div><a href="#carousel-1" role="button" data-bs-slide="prev" class="carousel-control-prev"><span aria-hidden="true" class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><a href="#carousel-1" role="button" data-bs-slide="next" class="carousel-control-next"><span aria-hidden="true" class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>
+                        <ol class="carousel-indicators">
+                            <li data-bs-target="#carousel-1" data-bs-slide-to="0"></li>
+                            <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
+                            <li data-bs-target="#carousel-1" data-bs-slide-to="2" class="active"></li>
+                        </ol>
+                    </div>
+                    <h4 style="font-size: 18px;margin-top: 10px;color: rgb(109,109,109);"><i class="fa fa-home" style="color: rgb(226,182,53);"></i> {{e.title}}</h4>
+                    <h4 style="font-size: 18px;margin-top: 10px;color: rgb(109,109,109);"><i class="fa fa-money" style="color: rgb(226,182,53);"></i> {{e.price|currency:'R'}}</h4>
+                  
+                    <h4 style="font-size: 18px;margin-top: 10px;color: rgb(109,109,109);"><i class="fa fa-check-circle-o" style="color: rgb(226,182,53);"></i> Description</h4>
+                    <p>{{e.description}}</p>
+                    <h4 style="font-size: 18px;margin-top: 10px;color: rgb(109,109,109);"><i class="fa fa-hourglass-end" style="color: rgb(226,182,53);"></i> Booking Status</h4>
+                    <ul class="list-unstyled" >
+                    <li>  <span  *ngIf="e.approved == 0" style="background: #eec637;color: rgb(255,255,255);border-radius: 15px;font-size: 18px;">&nbsp; pending&nbsp;&nbsp;</span>
+                        <span *ngIf="e.approved == 1" style="background: #58c614;color: rgb(255,255,255);border-radius: 15px;font-size: 18px;">&nbsp; Approved&nbsp;&nbsp;</span>
+                        <span *ngIf="e.approved == 2" style="background: #e71515;color: rgb(255,255,255);border-radius: 15px;font-size: 18px;">&nbsp; Cancelled&nbsp;&nbsp;</span>
+                    </li>
+                </ul>
+                <h4 style="font-size: 18px;margin-top: 10px;color: rgb(109,109,109);"><i class="fa fa-calendar-alt" style="color: rgb(226,182,53);"></i> Booked dates for room</h4>
+                <h4 style="font-size: 16px;color: rgb(109,109,109);"><i style="color: rgb(108, 249, 108);"class="fas fa-calendar-alt"></i> Check In :{{e.checkin| date: 'dd/MM/yyyy'}}</h4>
+                <h4 style="font-size: 16px;color: rgb(109,109,109);"><i style="color: rgb(211, 29, 5);"class="fas fa-calendar-alt"></i> Check Out :{{e.checkout| date: 'dd/MM/yyyy'}}</h4>
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col">
+                            <div class="card" style="border-radius: 10px;">
+                                <div class="card-body" style="border: 1px solid #DEAE05;border-radius: 4px;background: #262626;">
+                                    <h4 class="card-title" style="text-align: center;"><i class="fa fa-wifi" style="color: #DEAE05;"></i></h4>
+                                    <p style="text-align: center;color: #DEAE05;font-size: 10px;">Free Wi-Fi</p>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card" style="border-radius: 10px;">
+                                <div class="card-body" style="border: 1px solid #DEAE05;border-radius: 4px;">
+                                    <h4 class="card-title" style="text-align: center;"><i class="fa fa-tv" style="color: #DEAE05;"></i></h4>
+                                    <p style="text-align: center;color: #DEAE05;font-size: 10px;">Free television</p>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card" style="border-radius: 10px;">
+                                <div class="card-body" style="border: 1px solid #DEAE05;border-radius: 4px;">
+                                    <h4 class="card-title" style="text-align: center;"><i class="fa fa-bathtub" style="color: #DEAE05;"></i></h4>
+                                    <p style="text-align: center;color: #DEAE05;font-size: 10px;">Bathroom</p>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card" style="border-radius: 10px;">
+                                <div class="card-body" style="border: 1px solid #DEAE05;border-radius: 4px;background: #262626;">
+                                    <h4 class="card-title" style="text-align: center;"><i class="fa fa-coffee" style="color: #DEAE05;"></i></h4>
+                                    <p style="text-align: center;color: #DEAE05;font-size: 10px;">Free Breakfast</p>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col">
+                            <div class="card" style="border-radius: 10px;">
+                                <div class="card-body" style="border: 1px solid #DEAE05;border-radius: 4px;background: #262626;">
+                                    <h4 class="card-title" style="text-align: center;"><i class="fa fa-hotel" style="color: #DEAE05;"></i></h4>
+                                    <p style="text-align: center;color: #DEAE05;font-size: 10px;">Best bed</p>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card" style="border-radius: 10px;">
+                                <div class="card-body" style="border: 1px solid #DEAE05;border-radius: 4px;">
+                                    <h4 class="card-title" style="text-align: center;"><i class="fa fa-shopping-basket" style="color: #DEAE05;"></i></h4>
+                                    <p style="text-align: center;color: #DEAE05;font-size: 10px;">1 Dinner meal</p>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card" style="border-radius: 10px;">
+                                <div class="card-body" style="border: 1px solid #DEAE05;border-radius: 4px;">
+                                    <h4 class="card-title" style="text-align: center;"><i class="fa fa-shower" style="color: #DEAE05;"></i></h4>
+                                    <p style="text-align: center;color: #DEAE05;font-size: 10px;">Best Shower</p>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card" style="border-radius: 10px;">
+                                <div class="card-body" style="border: 1px solid #DEAE05;border-radius: 4px;background: #262626;">
+                                    <h4 class="card-title" style="text-align: center;"><i class="fa fa-shopping-basket" style="color: #DEAE05;"></i></h4>
+                                    <p style="text-align: center;color: #DEAE05;font-size: 10px;">Extra space</p>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)" class="custom-form" style="background: rgba(0,0,0,0.76);border-style: none;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
-                <div class="input-group" style="border-style: none;"></div>
-                <div class="row">
-                    <div class="col"><label class="form-label" style="color: #DEAE05;">CheckIn</label>
-                        <div class="input-group" style="border-style: none;"><input class="form-control" [(ngModel)]="checkin" type="date" id="checkin" min={{date}} ngModel name="checkin" style="border-style: none;" /><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-calendar-alt" style="color: rgb(255,255,255);"></i></span></div>
-                    </div>
-                    <div class="col"><label class="form-label" style="color: #DEAE05;">CheckOut</label>
-                        <div class="input-group" style="border-style: none;"><input class="form-control" type="date" min={{checkin}} id="checkout" ngModel name="checkout" style="border-style: none;" /><span class="input-group-text" style="background: #DEAE05;border-style: none;"><i class="fas fa-calendar-alt" style="color: rgb(255,255,255);"></i></span></div>
-                    </div>
-                </div><button class="btn btn-sm d-block submit-button w-100" type="submit" style="background: #DEAE05;border-radius: 5px;"><i class="fa fa-circle-o-notch"></i> Submit</button>
-            </form>
+            <div class="col-lg-6 mb-4">
+                <div class="contact-clean" style="background: rgba(38,38,38,0);border-radius: 10px;height: 0px;">
+                    <form class="shadow-none" #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)" method="post" style="background: rgb(255,255,255);border: 1px solid rgb(38,38,38) ;">
+                        <h2 class="text-center" style="font-size: 21px;margin-top: 10px;color: #deae07;"><i class="fa fa-home"></i> Add new dates for  Room Reserve</h2><label class="form-label" style="color: rgb(204,160,20);">Check In</label>
+                        <div class="form-group mb-3">
+                            <div class="input-group"><input type="date" [(ngModel)]="checkin" type="date" id="checkin" min={{date}} ngModel name="checkin"  class="form-control" style="border-top-left-radius: 4px;border-bottom-left-radius: 4px;" /><span class="input-group-text" style="background: #deae07;border-style: none;color: rgb(255,255,255);"><i class="fa fa-calendar-o"></i></span></div>
+                        </div><label class="form-label" style="color: rgb(204,160,20);">Check Out</label>
+                        <div class="form-group mb-3">
+                            <div class="input-group"><input type="date" class="form-control"  type="date" min={{checkin}} id="checkout" ngModel name="checkout"  style="border-top-left-radius: 4px;border-bottom-left-radius: 4px;" /><span class="input-group-text" style="background: #deae07;border-style: none;color: rgb(255,255,255);"><i class="fa fa-calendar-o"></i></span></div>
+                        </div>
+                        <div class="form-group mb-3"><button class="btn text-capitalize w-100" type="submit" style="background: #deae07;color: rgb(255,255,255);"><i class="fa fa-circle-o-notch"></i>Submit</button></div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
- 
-<app-footer></app-footer>
 
+
+<app-footer></app-footer>

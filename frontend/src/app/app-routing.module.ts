@@ -26,13 +26,17 @@ const routes: Routes = [{path: 'register', component:RegisterComponent},
 { path: 'dashboard', component: DashboardComponent,canActivate:[AuthService] },
 { path: 'booking', component: BookingComponent ,canActivate:[AuthService]},
 { path: 'profile', component: ProfileComponent ,canActivate:[AuthService]},
-{ path: 'room', component: RoomComponent },
+{ path: 'room', component: RoomComponent ,canActivate:[AuthService]},
 {path: 'profile', component: ProfileComponent ,canActivate:[AuthService]},
 {path:'roombookin',component:RoombookinComponent,canActivate:[AuthService]},
 {path:'bookingview',component:BookingviewComponent,canActivate:[AuthService]},
-{path:'bookingedit',component:BookingeditComponent,canActivate:[AuthService]},{path:'addroom',component:AddroomComponent,canActivate:[AuthService]},
-{path:'viewroom',component:ViewroomComponent,canActivate:[AuthService]},{path:'editroom',component:EditroomComponent,canActivate:[AuthService]},{path:'Profileadmin',component:ProfileadminComponent,canActivate:[AuthService]},
-{path:'viewbookings',component:ViewbookingsComponent,canActivate:[AuthService]},{path:'dashboardadmin',component:DashboardadminComponent ,canActivate:[AuthService]} ];
+{path:'bookingedit',component:BookingeditComponent,canActivate:[AuthService]},
+{path:'addroom',component:AddroomComponent,canActivate:[AuthService]},
+{path:'viewroom',component:ViewroomComponent,canActivate:[AuthService]},
+{path:'editroom',component:EditroomComponent,canActivate:[AuthService]},
+{path:'Profileadmin',component:ProfileadminComponent,canActivate:[AuthService]},
+{path:'viewbookings',component:ViewbookingsComponent,canActivate:[AuthService]},
+{path:'dashboardadmin',component:DashboardadminComponent ,canActivate:[AuthService]} ];
 
 
 @NgModule({

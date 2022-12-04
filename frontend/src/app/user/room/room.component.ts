@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { BnbService } from 'src/app/service/bnb.service';
 import { JwtService } from 'src/app/service/jwt.service';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-room',
@@ -12,11 +12,21 @@ import { JwtService } from 'src/app/service/jwt.service';
 export class RoomComponent implements OnInit {
    info:any;
    inf=[];
+  q:any;
 
-  constructor( private bnbService:BnbService,private router:Router,private jwtservice:JwtService) { }
+  constructor( private bnbService:BnbService,private router:Router,private jwtservice:JwtService,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+
+    this.spinner.show();
+
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 5000);
+
    this.bnbService.rooms(this.info).subscribe(res=>{
+
+ 
 
 
     this.info=res;
@@ -37,5 +47,7 @@ console.log(res);
 
 
   }  
+
+
 
 }

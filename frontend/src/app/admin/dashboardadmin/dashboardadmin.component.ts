@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BnbService } from 'src/app/service/bnb.service';
-
+import { JwtService } from 'src/app/service/jwt.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-dashboardadmin',
   templateUrl: './dashboardadmin.component.html',
@@ -17,12 +18,18 @@ export class DashboardadminComponent implements OnInit {
   rooming:any;
   rom=[];
 
-  constructor(private bnbService:BnbService,private router:Router) { }
+  constructor(private route: Router,private bnbservice:BnbService,private jwtService : JwtService,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+//spinner
+    this.spinner.show();
+
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 5000); 
 
     //bookings count
-    this.bnbService.countbooking(this.booking).subscribe(res=>{
+    this.bnbservice.countbooking(this.booking).subscribe(res=>{
 
       this.booking=res;
       this.bok=this.booking.data;
@@ -33,7 +40,7 @@ export class DashboardadminComponent implements OnInit {
      })
      //customer count 
 
-     this.bnbService.countcustomer(this.customer).subscribe(res=>{
+     this.bnbservice.countcustomer(this.customer).subscribe(res=>{
 
       this.customer=res;
       this.cus=this.customer.data;
@@ -45,7 +52,7 @@ export class DashboardadminComponent implements OnInit {
 
         //rooms count 
 
-        this.bnbService.countrooms(this.rooming).subscribe(res=>{
+        this.bnbservice.countrooms(this.rooming).subscribe(res=>{
 
           this.rooming=res;
           this.rom=this.rooming.data;

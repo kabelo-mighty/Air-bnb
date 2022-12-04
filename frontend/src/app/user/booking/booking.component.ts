@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BnbService } from 'src/app/service/bnb.service';
 import { JwtService } from 'src/app/service/jwt.service';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -23,9 +23,17 @@ import { JwtService } from 'src/app/service/jwt.service';
 
   }
     public isVisible: boolean = false;
-    constructor(private route: Router,private bnbService:BnbService,private jwtService : JwtService,private router:Router) { }
+    constructor(private route: Router,private bnbService:BnbService,private jwtService : JwtService,private router:Router,private spinner: NgxSpinnerService) { }
  
    ngOnInit(): void {
+
+
+    this.spinner.show();
+
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 5000); 
+
 
     this.user= this.jwtService.getDetails(localStorage.getItem('token')).data[0];
     let id=this.user.user_id
