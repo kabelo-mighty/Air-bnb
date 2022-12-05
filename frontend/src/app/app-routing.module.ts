@@ -14,6 +14,7 @@ import { BookingComponent } from './user/booking/booking.component';
 import { BookingeditComponent } from './user/bookingedit/bookingedit.component';
 import { BookingviewComponent } from './user/bookingview/bookingview.component';
 import { DashboardComponent } from './user/dashboard/dashboard.component';
+import { NotificationComponent } from './user/notification/notification.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { RoomComponent } from './user/room/room.component';
 import { RoombookinComponent } from './user/roombookin/roombookin.component';
@@ -36,7 +37,8 @@ const routes: Routes = [{path: 'register', component:RegisterComponent},
 {path:'editroom',component:EditroomComponent,canActivate:[AuthService]},
 {path:'Profileadmin',component:ProfileadminComponent,canActivate:[AuthService]},
 {path:'viewbookings',component:ViewbookingsComponent,canActivate:[AuthService]},
-{path:'dashboardadmin',component:DashboardadminComponent ,canActivate:[AuthService]} ];
+{path:'dashboardadmin',component:DashboardadminComponent ,canActivate:[AuthService]},
+{path:'notification',component:NotificationComponent ,canActivate:[AuthService]} ];
 
 
 @NgModule({

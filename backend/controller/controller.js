@@ -238,7 +238,33 @@ const message = (req, res) => {
                               
                             }}
 
+//============================================================================
+//read message
 
+const readmessage = (req, res) => {
+    
+                  
+  {
+
+
+  const id=parseInt(req.params.id)
+  const stat=1;
+          
+         con.query('UPDATE booking SET mark_read =? where booking_id =?',[stat,id], function (error, results, fields) 
+          {
+               if(error){
+                res.send('data approved.')
+  
+               }else{
+                res.send(results)
+               }
+  
+          })
+  
+  
+          
+        }}
+//============================================================================
 
                     //make booking 
 
@@ -643,6 +669,50 @@ const countmybooking = (req, res) => {
                         }} 
                 
 //============================================================================
+
+const notification = (req, res) => {
+    
+  const id=parseInt(req.params.id);
+  {
+       
+          
+         con.query('SELECT COUNT(*) as countn from booking WHERE approved > 0 AND mark_read=0 AND archive=0 AND user_id=?',[id], function (error, results, fields) 
+          {
+               if(error){
+                res.send('data not found')
+  
+               }else{
+                res.send(results)
+               }
+  
+          })
+  
+  
+          
+        }} 
+//============================================================================
+
+const usernotification = (req, res) => {
+    
+    
+  {
+  const id=parseInt(req.params.id)
+          
+         con.query('SELECT * from booking,room WHERE booking.room_id=room.room_id AND  approved > 0 AND  archive=0 AND user_id=?',[id], function (error, results, fields) 
+          {
+               if(error){
+                res.send('data not found')
+  
+               }else{
+                res.send(results)
+               }
+  
+          })
+  
+  
+          
+        }}
+//============================================================================
                     //cancel booking
                     const cancelBooking = (req, res) => {
                   
@@ -681,6 +751,6 @@ module.exports = {
   archiveBooking,
   viewbook,
   updateDate,removeroom,addroom,updateroom,allbooks,countbooking,countcustomer,countrooms,approvebooking,cancelBooking,updateprofile,currentUser,
-  countmybooking,countpending,counthistory,countcancelbooking
+  countmybooking,countpending,counthistory,countcancelbooking,notification,usernotification,readmessage
   
 }    

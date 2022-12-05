@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-dark mb-0" style="font-size: 16px;font-weight: bold;">Booking Notifications</h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 offset-lg-0 mb-4">
+            <div class="card shadow mb-4"></div>
+            <div class="card shadow mb-4">
+                <div class="card-header py-3" style="background: #262626;">
+                    <h6 class="fw-bold m-0" style="color: #DEAE05;">Notification</h6>
+                </div>
+                <ul class="list-group list-group-flush" *ngFor="let e of info;">
+                    <li class="list-group-item">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col me-2">
+                                <h6 class="mb-0" style="color: #DEAE05;"><strong>Notification for booking
+                                <span *ngIf="e.approved==1" style="color:Green;">(Successful)</span>
+                                <span *ngIf="e.approved==2" style="color:red;">(Cancelled)</span>
+                               
+                                </strong></h6>
+                                <span class="text-xs" style="font-size: 15px;" *ngIf="e.approved==1">Your booking for {{e.title}} was approved.</span>
+                                <span class="text-xs" style="font-size: 15px;" *ngIf="e.approved==2">Your booking for {{e.title}} was cancelled.</span>
+                                <br>
+                                <span class="text-xs"><i class="fa fa-clock"></i> Booking Time : {{e.time |date :'shortTime'}}</span><br>
+                                <span class="text-xs"><i class="fa fa-calendar" ></i> Booking Date : {{e.time | date: 'dd/MM/yyyy' }}</span>
+                            </div>
+                            
+                            <div *ngIf="e.mark_read==0"  class="col-auto"><button class="btn btn-sm" (click)= read(e) type="submit" style="background: rgb(38,38,38);color: #DEAE05;">mark as read</button></div>
+                            <div *ngIf="e.mark_read==1" style="display: none;" class="col-auto"><button class="btn btn-sm" (click)= read(e) type="submit" style="background: rgb(38,38,38);color: #DEAE05;">mark as read</button></div>
+                        </div>
+                    </li>
+                   
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngx-spinner
+bdColor="rgba(51,51,51,0.8)"
+size="medium"
+color="#fff"
+type="ball-scale-multiple"
+>
+<p class="loading" style="font-size: 30px; color: white"><i class="fas fa-door-open" style="color: #DEAE05;"></i>Laitalia<span style="color: #DEAE05;">BnB</span></p>
+</ngx-spinner>
+<app-footer></app-footer>

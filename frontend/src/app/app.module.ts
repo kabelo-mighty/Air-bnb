@@ -31,6 +31,7 @@ import { NavbaradminComponent } from './admin/navbaradmin/navbaradmin.component'
 import {NgxPaginationModule} from 'ngx-pagination';
 import { GuardService } from './service/guard.service';
 import { AuthService } from './service/auth.service';
+import { NotificationComponent } from './user/notification/notification.component';
 
 
 
@@ -58,7 +59,8 @@ RouterModule
     ViewbookingsComponent,
     DashboardadminComponent,
     ProfileadminComponent,
-    NavbaradminComponent
+    NavbaradminComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,

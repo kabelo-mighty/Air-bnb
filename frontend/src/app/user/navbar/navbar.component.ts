@@ -14,7 +14,8 @@ export class NavbarComponent implements OnInit {
   tittle:any;
   data1:any;
   init :any;
- 
+  notification:any;
+  
 user = {
       user_id: '',
       firstname:'',
@@ -22,11 +23,18 @@ user = {
       email:''
 
   }
-
+ 
   ngOnInit(): void {
 
     this.user= this.jwtService.getDetails(localStorage.getItem('token')).data[0];
     this.init = this.user.lastname.charAt(0).toUpperCase();
+    let id=this.user.user_id
+
+    this.service.notification(id).subscribe((data)=>{
+      this.notification= data;
+      console.log('notification',data)
+   
+      })
 
   }
 

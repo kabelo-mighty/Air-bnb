@@ -20,8 +20,11 @@ export class BnbService {
   baseUrlBookId = "http://localhost:3000/books/"
   baseUrlMakeBook = "http://localhost:3000/makeBooking/"
   baseUrlArchive = "http://localhost:3000/archiveBooking"
-  baseUrlGetoneBook = "http://localhost:3000/viewbook/"
 
+  baseUrlread= "http://localhost:3000/readmessage"
+
+  baseUrlGetoneBook = "http://localhost:3000/viewbook/"
+  baseUrluserNot = "http://localhost:3000/usernotification/"
   baseUrlupdateDate = "http://localhost:3000/updateDate/"
   baseUrlupdateprofile = "http://localhost:3000/updateprofile"
   baseUrlremoveroom = "http://localhost:3000/removeroom"
@@ -35,9 +38,9 @@ baseUrlapprove="http://localhost:3000/approvebooking"
   baseUrlcountB="http://localhost:3000/countbooking"
   baseUrlcountC="http://localhost:3000/countcustomer"
   baseUrlcountR="http://localhost:3000/countrooms"
-
- 
-
+//================================================================
+ //count notifications
+baseUrlcountUserN="http://localhost:3000/notification/"
 //===================================================================
   //count for user
   baseUrlcountUserB="http://localhost:3000/countmybooking/"
@@ -58,6 +61,12 @@ baseUrlapprove="http://localhost:3000/approvebooking"
   }
 
   //================================================================
+  notification(id: any){
+    return this.http.get(this.baseUrlcountUserN+id);
+  }
+
+  //================================================================
+  
   create(data: any) {
     return this.http.post(this.baseUrlRegister, data);
   }
@@ -92,7 +101,9 @@ baseUrlapprove="http://localhost:3000/approvebooking"
   books(id: any){
     return this.http.get(this.baseUrlMakeBook+id);
   }
-
+  usernotification(id: any){
+    return this.http.get(this.baseUrluserNot+id);
+  }
   archiveBooking(id:any){
     return this.http.put(`${this.baseUrlArchive}/${id}`, {});
   }
@@ -155,6 +166,11 @@ baseUrlapprove="http://localhost:3000/approvebooking"
   //approve booking
   approvebooking(id:any){
     return this.http.put(`${this.baseUrlapprove}/${id}`, {});
+  }
+  //message READING
+  
+  readmessage(id:any){
+    return this.http.put(`${this.baseUrlread}/${id}`, {});
   }
 //cancel booking
   cancelBooking(id:any){
