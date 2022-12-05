@@ -69,7 +69,7 @@ RouterModule
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       {path:'dashboard',component:DashboardComponent},{path:'homepage',component:HomepageComponent},{path:'bookingedit',component:BookingeditComponent},{path:'viewroom',component:ViewroomComponent}
-    ,{path:'addroom',component:AddroomComponent}
+    ,{path:'addroom',component:AddroomComponent},{path:'notification',component:NotificationComponent}
     ]),
   ],
   providers: [GuardService,AuthService],

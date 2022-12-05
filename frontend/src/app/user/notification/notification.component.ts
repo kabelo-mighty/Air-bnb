@@ -12,6 +12,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class NotificationComponent implements OnInit {
   info:any;
   inf=[];
+  q:any;
   user = {
     user_id: '',
     firstname:'',
@@ -19,8 +20,9 @@ export class NotificationComponent implements OnInit {
     email:''
 
 }
-  constructor(private route: Router,private bnbService:BnbService,private jwtService : JwtService,private router:Router,private spinner: NgxSpinnerService) { }
- 
+public isVisible: boolean = false;
+constructor( private bnbService:BnbService,private router:Router,private jwtservice:JwtService,private spinner: NgxSpinnerService) { }
+
 
   ngOnInit(): void {
 
@@ -30,11 +32,9 @@ export class NotificationComponent implements OnInit {
       this.spinner.hide();
     }, 5000);
     
-    this.user= this.jwtService.getDetails(localStorage.getItem('token')).data[0];
+    this.user= this.jwtservice.getDetails(localStorage.getItem('token')).data[0];
     let id=this.user.user_id
   
-
-
     this.bnbService.usernotification(id).subscribe(res=>{
  
  
@@ -56,20 +56,21 @@ export class NotificationComponent implements OnInit {
  
  
    this.bnbService.readmessage(id).subscribe(data => console.log(data))
-  //  if (this.approveisVisible) { 
-  //    return;
-  //   }
-  //  this.approveisVisible = true;
-  //  setTimeout(()=> this.approveisVisible = false,1500)
+   setTimeout(()=> location.reload(),1750)
+   if (this.isVisible) { 
+     return;
+    }
+   this.isVisible = true;
+   setTimeout(()=> this.isVisible = false,1500)
+  
 
-  this.bnbService.usernotification(id).subscribe(res=>{
- 
- 
-    this.info=res;
-    this.inf=this.info.data;
-    console.log(this.info);
+  
+  // this.bnbService.usernotification(id).subscribe(res=>{
+  //   this.info=res;
+  //   this.inf=this.info.data;
+  //   console.log(this.info);
    
-   })
+  //  })
 
     
 
