@@ -14,12 +14,12 @@ var con = mysql.createConnection({
 
 const createUser = (req, res) => {
     
-  const {firstname,lastname,email,password,confirm} = req.body; 
+  const {firstname,lastname,email,password} = req.body; 
 
    const hashed_password = md5(password.toString())
   
 
-  if(firstname && lastname && email && password && confirm){
+  if(firstname && lastname && email && password){
 
 
 
