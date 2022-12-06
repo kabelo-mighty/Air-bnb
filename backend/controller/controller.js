@@ -522,12 +522,14 @@ res.send(results)
 
 
             const id=parseInt(req.params.id)
-            const {title,description,img_url,price} = req.body; 
+            const {title,description,img_url1,img_url2,img_url3,price} = req.body; 
             var roomvalue={
 
              "title":title,
              "description":description,
-             "img_url":img_url,
+             "img_url1":img_url1,
+             "img_url2":img_url2,
+             "img_url3":img_url3,
               "price":price
            
           }
@@ -696,47 +698,71 @@ const countmybooking = (req, res) => {
 //============================================================================
 
 const notification = (req, res) => {
-    
+
+const id=parseInt(req.params.id);
+{
+
+
+con.query('SELECT COUNT(*) as countn from booking WHERE approved > 0 AND mark_read=0 AND archive=0 AND user_id=?',[id], function (error, results, fields) 
+{
+if(error){
+res.send('data not found')
+
+}else{
+res.send(results)
+}
+
+})
+
+
+
+}} 
+//============================================================================
+//count contacts   contactscount
+
+const contactscount = (req, res) => {
+
   const id=parseInt(req.params.id);
   {
-       
-          
-         con.query('SELECT COUNT(*) as countn from booking WHERE approved > 0 AND mark_read=0 AND archive=0 AND user_id=?',[id], function (error, results, fields) 
-          {
-               if(error){
-                res.send('data not found')
-  
-               }else{
-                res.send(results)
-               }
-  
-          })
   
   
-          
-        }} 
+  con.query('SELECT COUNT(*) as countc from contact',[], function (error, results, fields) 
+  {
+  if(error){
+  res.send('data not found')
+  
+  }else{
+  res.send(results)
+  }
+  
+  })
+  
+  
+  
+  }} 
+
 //============================================================================
 
 const usernotification = (req, res) => {
-    
-    
-  {
-  const id=parseInt(req.params.id)
-          
-         con.query('SELECT * from booking,room WHERE booking.room_id=room.room_id AND  approved > 0 AND  archive=0 AND user_id=?',[id], function (error, results, fields) 
-          {
-               if(error){
-                res.send('data not found')
-  
-               }else{
-                res.send(results)
-               }
-  
-          })
-  
-  
-          
-        }}
+
+
+{
+const id=parseInt(req.params.id)
+
+con.query('SELECT * from booking,room WHERE booking.room_id=room.room_id AND  approved > 0 AND  archive=0 AND user_id=?',[id], function (error, results, fields) 
+{
+if(error){
+res.send('data not found')
+
+}else{
+res.send(results)
+}
+
+})
+
+
+
+}}
 //============================================================================
                     //cancel booking
                     const cancelBooking = (req, res) => {
@@ -776,6 +802,6 @@ module.exports = {
   archiveBooking,
   viewbook,
   updateDate,removeroom,addroom,updateroom,allbooks,countbooking,countcustomer,countrooms,approvebooking,cancelBooking,updateprofile,currentUser,
-  countmybooking,countpending,counthistory,countcancelbooking,notification,usernotification,readmessage,contacts
+  countmybooking,countpending,counthistory,countcancelbooking,notification,usernotification,readmessage,contacts,contactscount
   
 }    

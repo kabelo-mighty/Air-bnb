@@ -18,6 +18,9 @@ export class DashboardadminComponent implements OnInit {
   rooming:any;
   rom=[];
 
+  contact:any;
+  cont=[];
+
   constructor(private route: Router,private bnbservice:BnbService,private jwtService : JwtService,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
@@ -56,6 +59,16 @@ export class DashboardadminComponent implements OnInit {
 
           this.rooming=res;
           this.rom=this.rooming.data;
+    
+          console.log(res)
+     
+      
+         })
+         //contact count
+         this.bnbservice.contactscount(this.contact).subscribe(res=>{
+
+          this.contact=res;
+          this.cont=this.contact.data;
     
           console.log(res)
      

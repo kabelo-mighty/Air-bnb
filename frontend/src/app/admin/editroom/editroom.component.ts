@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { BnbService } from 'src/app/service/bnb.service';
 
 @Component({
@@ -14,18 +15,24 @@ export class EditroomComponent implements OnInit {
 
   public isVisible: boolean = false;
 
-   Rooms:any;
+  Rooms:any;
   title!: string;
   price!: string;
   description!: string;
-  img_url!: string;
-    
-
-    constructor(private bnbservice:BnbService,private http:HttpClient,private router:Router) { }
+  img_url1!: string;
+  img_url2!: string; 
+  img_url3!: string;
+    constructor(private bnbservice:BnbService,private http:HttpClient,private router:Router,private spinner: NgxSpinnerService) { }
   
     ngOnInit(): void {
 
-   
+      //spinner
+      this.spinner.show();
+
+      setTimeout(() => {
+        this.spinner.hide();
+      }, 5000); 
+
     let id=localStorage.getItem('room_id');
   
     this.bnbservice.currentRoom(id).subscribe((data)=>{

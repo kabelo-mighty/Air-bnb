@@ -40,6 +40,8 @@ baseUrlapprove="http://localhost:3000/approvebooking"
   baseUrlcountB="http://localhost:3000/countbooking"
   baseUrlcountC="http://localhost:3000/countcustomer"
   baseUrlcountR="http://localhost:3000/countrooms"
+  baseUrlCountContact="http://localhost:3000/contactscount"
+  
 //================================================================
  //count notifications
 baseUrlcountUserN="http://localhost:3000/notification/"
@@ -93,6 +95,10 @@ baseUrlcountUserN="http://localhost:3000/notification/"
 //get contact
 contacts(data: any){
   return this.http.get(this.baseUrlContact, data);
+}
+//get count contact
+contactscount(data: any){
+  return this.http.get(this.baseUrlCountContact, data);
 }
 //
   currentRoom(id: any){

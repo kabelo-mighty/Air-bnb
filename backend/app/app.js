@@ -57,6 +57,7 @@ app.get('/contacts',db.contacts)
 app.get('/book/:id',db.currentbook)
 app.get('/viewbook/:id',db.viewbook)
 app.get('/books/:id',db.currentbook)
+app.get('/contactscount',db.contactscount)
 //count user
 app.get('/countmybooking/:id',db.countmybooking)
 app.get('/countpending/:id',db.countpending)

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { BnbService } from 'src/app/service/bnb.service';
 
 @Component({
@@ -14,9 +15,18 @@ import { BnbService } from 'src/app/service/bnb.service';
     inf=[];
     q:any;
     public isVisible: boolean = false;
-   constructor( private bnbService:BnbService,private router:Router) { }
+   constructor( private bnbService:BnbService,private router:Router,private spinner: NgxSpinnerService) { }
  
    ngOnInit(): void {
+
+
+     //spinner
+     this.spinner.show();
+
+     setTimeout(() => {
+       this.spinner.hide();
+     }, 5000); 
+
     this.bnbService.rooms(this.info).subscribe(res=>{
  
  
