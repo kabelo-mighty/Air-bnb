@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
     this.form = this.formBuilder.group(
       {
         firstname: ['', [Validators.required,
-                    Validators.minLength(3),Validators.pattern('/[a-zA-Z][a-zA-Z ]+[a-zA-Z ]/')]
+                    Validators.minLength(3),Validators.pattern("^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$")]
                   ],
         
         lastname: [
@@ -45,20 +45,19 @@ export class RegisterComponent implements OnInit {
           [
             Validators.required,
            Validators.minLength(3)
-           ,Validators.pattern('/[a-zA-Z][a-zA-Z ]+[a-zA-Z]$/')
+           ,Validators.pattern("^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$")
            // Validators.maxLength(20)
           ]
         ],
-        email: ['', [Validators.required, Validators.email]],
+        email: ['', [Validators.required, Validators.email,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
         password: [
           '',
           [
             Validators.required,
             Validators.minLength(6),
             Validators.maxLength(40),
-            Validators.pattern('/^(?=.*[a-z])/'),
-            Validators.pattern('/^(?=.*[A-Z])/'),
-            Validators.pattern('/^(?=.*[0-9])/')
+            Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,15}')
+      
             
           ]
         ],

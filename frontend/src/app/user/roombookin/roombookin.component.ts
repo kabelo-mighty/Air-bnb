@@ -1,9 +1,10 @@
-
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BnbService } from 'src/app/service/bnb.service';
 import { Component, OnChanges, DoCheck, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-roombookin',
@@ -11,6 +12,13 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./roombookin.component.scss']
 })
 export class RoombookinComponent implements OnInit {
+
+  form: FormGroup = new FormGroup({
+   
+    checkin: new FormControl(''),
+    checkout: new FormControl('')
+  });
+
 
   checkin='';
   checkout='';
@@ -22,6 +30,7 @@ export class RoombookinComponent implements OnInit {
 Rooms:any;
 
 
+submitted = false;
 
 booking={
 room_id:'',
@@ -29,14 +38,10 @@ user_id:'',
 checkin:'',
 checkout:''
 }
-//spinner
-typeSelected:string;
 
-public isVisible: boolean = false;
 
-constructor(private bnbservice:BnbService,private http:HttpClient,private router:Router,private spinner: NgxSpinnerService) {
+constructor(private bnbservice:BnbService,private http:HttpClient,private router:Router,private spinner: NgxSpinnerService,private formBuilder: FormBuilder, private toast : NgToastService) {
 
-  this.typeSelected = 'ball-fussion';
  }
 
   ngOnInit(): void {
@@ -53,7 +58,7 @@ constructor(private bnbservice:BnbService,private http:HttpClient,private router
 
 
 
-  this.date = this.yyyy+"-"+ this.mm + "-" +this.dd;
+  this.date = this.yyyy+"-"+ this.mm + "-" +0+this.dd;
   console.log(this.dd)
 
   
@@ -63,15 +68,39 @@ constructor(private bnbservice:BnbService,private http:HttpClient,private router
    console.log(this.Rooms)
 
    })
-  }
 
+
+
+
+   this.form = this.formBuilder.group(
+    {
+   
+      checkin: ['', [Validators.required]],
+      checkout: [
+        '',
+        [
+          Validators.required
+        ]
+      ],
+      
+    
+    },
+    
+  );
+
+
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
+  }
+  
 
   ngDoCheck() {
-    //console.log('Running change detection ', Date.now());
+    console.log('Running change detection ', Date.now());
   }
   
   onSubmit(data:any){
-
+    this.submitted = true;
  let rId= this.booking.room_id = JSON.stringify(localStorage.getItem('room_id'));
  let UId= this.booking.room_id = JSON.stringify(localStorage.getItem('user_id'));
 
@@ -85,17 +114,13 @@ constructor(private bnbservice:BnbService,private http:HttpClient,private router
       "checkout":data.checkout
     }
 
-   console.log(bookroom)
+
 
     this.http.post('http://localhost:3000/makeBooking',bookroom,{responseType:'text'})
     .subscribe((results)=>{
-  if (this.isVisible) { 
-          return;
-        } 
-
   
-        this.isVisible = true;
-        setTimeout(()=> this.isVisible = false,1500)
+
+  this.toast.success({detail:"Success",summary:'Booking was successfully', duration:2000})
         setTimeout(()=> this.router.navigate(['/booking']),1600)
 
       })

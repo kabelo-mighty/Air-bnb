@@ -1,11 +1,5 @@
 <app-navbar></app-navbar>
 
-<!--------arlet-->
-
-<div class="updated" [class.visible]="isVisible"> 
-    <i class="fa fa-exclamation-circle" style="font-size: 20px;"></i> Room successfully booked.
-</div>
-<!-----------------> 
 <div class="container-fluid">
     <div class="container" *ngFor="let e of Rooms;">
         <div class="row">
@@ -109,15 +103,35 @@
             </div>
             <div class="col-lg-6 mb-4">
                 <div class="contact-clean" style="background: rgba(38,38,38,0);border-radius: 10px;height: 0px;">
-                    <form class="shadow-none" #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)" method="post" style="background: rgb(255,255,255);border: 1px solid rgb(38,38,38) ;">
+                    <form class="shadow-none" [formGroup]="form" #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)" method="post" style="background: rgb(255,255,255);border: 1px solid rgb(38,38,38) ;">
                         <h2 class="text-center" style="font-size: 21px;margin-top: 10px;color: #deae07;"><i class="fa fa-home"></i> Reserve Room</h2><label class="form-label" style="color: rgb(204,160,20);">Check In</label>
                         <div class="form-group mb-3">
-                            <div class="input-group"><input type="date" [(ngModel)]="checkin" type="date" id="checkin" min={{date}} ngModel name="checkin"  class="form-control" style="border-top-left-radius: 4px;border-bottom-left-radius: 4px;" /><span class="input-group-text" style="background: #deae07;border-style: none;color: rgb(255,255,255);"><i class="fa fa-calendar-o"></i></span></div>
+                            <div class="input-group"><input type="date" formControlName="checkin" [ngClass]="{ 'is-invalid': submitted && f['checkin'].errors }"  [(ngModel)]="checkin" type="date" id="checkin" min={{date}} name="checkin"  class="form-control" style="border-top-left-radius: 4px;border-bottom-left-radius: 4px;" /><span class="input-group-text" style="background: #deae07;border-style: none;color: rgb(255,255,255);"><i class="fa fa-calendar-o"></i></span>
+                            
+                                  <!----------->
+
+          <div *ngIf="submitted && f['checkin'].errors" class="invalid-feedback">
+            <div *ngIf="f['checkin'].errors['required']">Checkin date is required</div>
+
+          </div>
+    <!--------->
+                            </div>
                         </div><label class="form-label" style="color: rgb(204,160,20);">Check Out</label>
                         <div class="form-group mb-3">
-                            <div class="input-group"><input type="date" class="form-control" [(ngModel)]="checkout" type="date" min={{checkin}} id="checkout" ngModel name="checkout"  style="border-top-left-radius: 4px;border-bottom-left-radius: 4px;" /><span class="input-group-text" style="background: #deae07;border-style: none;color: rgb(255,255,255);"><i class="fa fa-calendar-o"></i></span></div>
+                            <div class="input-group">
+                                
+                                <input type="date" class="form-control"  formControlName="checkout" [ngClass]="{ 'is-invalid': submitted && f['checkout'].errors }"  [(ngModel)]="checkout" type="date" min={{checkin}} id="checkout" ngModel name="checkout"  style="border-top-left-radius: 4px;border-bottom-left-radius: 4px;" /><span class="input-group-text" style="background: #deae07;border-style: none;color: rgb(255,255,255);"><i class="fa fa-calendar-o"></i></span>
+                                        <!----------->
+
+          <div *ngIf="submitted && f['checkin'].errors" class="invalid-feedback">
+            <div *ngIf="f['checkin'].errors['required']">Checkout date is required</div>
+
+          </div>
+    <!--------->
+                            
+                            </div>
                         </div>
-                        <div class="form-group mb-3"><button class="btn text-capitalize w-100" type="submit" style="background: #deae07;color: rgb(255,255,255);"><i class="fa fa-circle-o-notch"></i>Submit</button></div>
+                        <div class="form-group mb-3"><button class="btn text-capitalize w-100"  type="submit" style="background: #deae07;color: rgb(255,255,255);"><i class="fa fa-circle-o-notch"></i>Submit</button></div>
                     </form>
                 </div>
             </div>

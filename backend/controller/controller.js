@@ -427,6 +427,7 @@ const readmessage = (req, res) => {
                   
                  
                 }
+                if(checkin && checkout){
                  con.query('UPDATE booking SET ? WHERE booking_id= ?',[booking,id], function (error, results, fields) 
                   {
                        if(error){
@@ -437,7 +438,7 @@ const readmessage = (req, res) => {
                        }
           
                   })
-                }
+                }}
 //========================================================================================
 //delete room
 
@@ -498,12 +499,12 @@ res.send(results)
 
 
             const id=parseInt(req.params.id)
-            const {firstname,lastname,email} = req.body; 
+            const {firstname,lastname} = req.body; 
             var profilevalue={
 
              "firstname":firstname,
-             "lastname":lastname,
-             "email":email
+             "lastname":lastname
+        
            
           }
            con.query('UPDATE User SET ? WHERE user_id= ?',[profilevalue,id], function (error, results, fields) 
