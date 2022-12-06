@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddroomComponent } from './admin/addroom/addroom.component';
+import { ContactsComponent } from './admin/contacts/contacts.component';
 import { DashboardadminComponent } from './admin/dashboardadmin/dashboardadmin.component';
 import { EditroomComponent } from './admin/editroom/editroom.component';
 import { ProfileadminComponent } from './admin/profileadmin/profileadmin.component';
@@ -38,7 +39,8 @@ const routes: Routes = [{path: 'register', component:RegisterComponent},
 {path:'Profileadmin',component:ProfileadminComponent,canActivate:[AuthService]},
 {path:'viewbookings',component:ViewbookingsComponent,canActivate:[AuthService]},
 {path:'dashboardadmin',component:DashboardadminComponent ,canActivate:[AuthService]},
-{path:'notification',component:NotificationComponent ,canActivate:[AuthService]} ];
+{path:'notification',component:NotificationComponent ,canActivate:[AuthService]},
+{path:'contacts',component:ContactsComponent ,canActivate:[AuthService]} ];
 
 
 @NgModule({

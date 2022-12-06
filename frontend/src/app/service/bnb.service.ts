@@ -20,7 +20,9 @@ export class BnbService {
   baseUrlBookId = "http://localhost:3000/books/"
   baseUrlMakeBook = "http://localhost:3000/makeBooking/"
   baseUrlArchive = "http://localhost:3000/archiveBooking"
-
+//============================================================================
+baseUrlContact = "http://localhost:3000/contacts"
+//============================================================================
   baseUrlread= "http://localhost:3000/readmessage"
 
   baseUrlGetoneBook = "http://localhost:3000/viewbook/"
@@ -88,7 +90,11 @@ baseUrlcountUserN="http://localhost:3000/notification/"
     return this.http.get(this.baseUrlBook, data);
   }
 
-
+//get contact
+contacts(data: any){
+  return this.http.get(this.baseUrlContact, data);
+}
+//
   currentRoom(id: any){
     return this.http.get(this.baseUrlRoomById+id);
   }
@@ -101,6 +107,8 @@ baseUrlcountUserN="http://localhost:3000/notification/"
   books(id: any){
     return this.http.get(this.baseUrlMakeBook+id);
   }
+  
+ 
   usernotification(id: any){
     return this.http.get(this.baseUrluserNot+id);
   }

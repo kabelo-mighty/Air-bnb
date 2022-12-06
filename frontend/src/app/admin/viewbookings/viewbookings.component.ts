@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BnbService } from 'src/app/service/bnb.service';
 
+
 @Component({
   selector: 'app-viewbookings',
   templateUrl: './viewbookings.component.html',

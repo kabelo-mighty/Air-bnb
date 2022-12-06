@@ -12,6 +12,7 @@ import { BnbService } from 'src/app/service/bnb.service';
   export class ViewroomComponent implements OnInit {
     info:any;
     inf=[];
+    q:any;
     public isVisible: boolean = false;
    constructor( private bnbService:BnbService,private router:Router) { }
  

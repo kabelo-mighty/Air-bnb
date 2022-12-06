@@ -52,6 +52,7 @@ app.get('/countbooking',db.countbooking)
 app.get('/countcustomer',db.countcustomer)
 app.get('/countrooms',db.countrooms)
 app.get('/currentUser/:id',db.currentUser)
+app.get('/contacts',db.contacts)
 //count admin
 app.get('/book/:id',db.currentbook)
 app.get('/viewbook/:id',db.viewbook)

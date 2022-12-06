@@ -7,12 +7,11 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoomComponent } from './user/room/room.component';
 import { DashboardComponent } from './user/dashboard/dashboard.component';
 import { ProfileComponent } from './user/profile/profile.component';
-
 import { NavbarComponent } from './user/navbar/navbar.component';
 import { FooterComponent } from './user/footer/footer.component';
 import { BookingComponent } from './user/booking/booking.component';
@@ -32,6 +31,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { GuardService } from './service/guard.service';
 import { AuthService } from './service/auth.service';
 import { NotificationComponent } from './user/notification/notification.component';
+import { ContactsComponent } from './admin/contacts/contacts.component';
 
 
 
@@ -60,7 +60,8 @@ RouterModule
     DashboardadminComponent,
     ProfileadminComponent,
     NavbaradminComponent,
-    NotificationComponent
+    NotificationComponent,
+    ContactsComponent
   ],
   imports: [
     BrowserModule,
