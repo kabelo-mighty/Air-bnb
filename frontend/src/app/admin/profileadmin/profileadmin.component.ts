@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { BnbService } from 'src/app/service/bnb.service';
 import { JwtService } from 'src/app/service/jwt.service';
 
@@ -12,7 +13,7 @@ import { JwtService } from 'src/app/service/jwt.service';
 export class ProfileadminComponent implements OnInit {
   person:any;
   public isVisible: boolean = false;
-  constructor(private route: Router,private bnbservice:BnbService,private jwtService : JwtService,private http:HttpClient) { }
+  constructor(private route: Router,private bnbservice:BnbService,private jwtService : JwtService,private http:HttpClient,private spinner: NgxSpinnerService) { }
   user = {
     user_id: '',
     firstname:'',
@@ -22,6 +23,13 @@ export class ProfileadminComponent implements OnInit {
 }
   ngOnInit(): void {
 
+
+     //spinner
+     this.spinner.show();
+
+     setTimeout(() => {
+       this.spinner.hide();
+     }, 5000); 
     this.user= this.jwtService.getDetails(localStorage.getItem('token')).data[0];
     let id=this.user.user_id
 

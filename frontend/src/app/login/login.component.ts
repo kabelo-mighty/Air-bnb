@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BnbService } from '../service/bnb.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JwtService } from '../service/jwt.service';
 import { GuardService } from '../service/guard.service';
+import Validation from '../register/validation';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,15 @@ export class LoginComponent implements OnInit {
   guardService: any;
 
 
+  form: FormGroup = new FormGroup({
+   
+    email: new FormControl(''),
+    password: new FormControl('')
+  });
+
+
+  submitted = false;
+
   user = {
     user_id: '',
     firstname:'',
@@ -32,16 +42,36 @@ export class LoginComponent implements OnInit {
   constructor(private http:HttpClient,private formBuilder: FormBuilder,private router:Router, private jwtService : JwtService,private guardservice : GuardService) { }
 
   ngOnInit(): void {
-
+    this.form = this.formBuilder.group(
+      {
+     
+        email: ['', [Validators.required, Validators.email]],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(6),
+           
+            Validators.maxLength(40)
+          ]
+        ],
+        
+      
+      },
+      
+    );
 
 
 
   
   }
- 
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
+  }
   
   onSubmit(data:any){
    //check
+   this.submitted = true;
     //connect to server
     this.guardservice.login();
 

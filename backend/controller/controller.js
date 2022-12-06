@@ -572,7 +572,7 @@ res.send(results)
         {
               var stat=0;
                 
-               con.query('select count(*) as countcustomer from user where user_id > 3',[], function (error, results, fields) 
+               con.query('select count(*) as countcustomer from user where user_id >= 3',[], function (error, results, fields) 
                 {
                      if(error){
                       res.send('data not found')
