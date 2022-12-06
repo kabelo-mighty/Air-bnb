@@ -4,7 +4,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { BnbService } from '../service/bnb.service';
 import { Router } from '@angular/router';
 import Validation from './validation';
-
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -29,19 +29,22 @@ export class RegisterComponent implements OnInit {
   public isVisible: boolean = false;
 
 
-  constructor(private  http:HttpClient, private router:Router,private formBuilder: FormBuilder ) { }
+  constructor(private  http:HttpClient, private router:Router,private formBuilder: FormBuilder, private toast : NgToastService ) { }
 
   ngOnInit(): void {
 
 
     this.form = this.formBuilder.group(
       {
-        firstname: ['', Validators.required],
+        firstname: ['', [Validators.required,
+                    Validators.minLength(3)]
+                  ],
+        
         lastname: [
           '',
           [
             Validators.required,
-          //  Validators.minLength(3),
+           Validators.minLength(3)
            // Validators.maxLength(20)
           ]
         ],
@@ -68,24 +71,65 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(data:any){
-    //check
-  this.submitted = true;
-   
+
+    this.submitted = true;
     //Add the User to the Database
     this.http.post('http://localhost:3000/register',data, {responseType:'text'})
     .subscribe((results)=>{
 
-
+      if(results == 'Account created succesfully!')
+      {
+        this.openSucess();
+        this.router.navigate(['/login'])
+      }
+      else
+      {
+        this.openWarning()
+        this.router.navigate(['/register'])
+      }
+    
       if (this.isVisible) { 
+     
         return;
       } 
-      this.isVisible = true;
-      setTimeout(()=> this.isVisible = false,850)
+   
 
-      setTimeout(()=> this.router.navigate(['/login']),900)
 
-      })
+      }
+      ,(err)=>{
+        this.openWarning();
+      }
+      )
+      
     }
+  
+  
+    openSucess(){
+      this.toast.success({detail:"Warning", summary:"Succesfully Registered"})
+    }
+
+    openWarning(){
+      this.toast.warning({detail:"Warning",summary:'Email already exist', duration:2000})
+    }
+  // onSubmit(data:any){
+  //   //check
+  // this.submitted = true;
+   
+  //   //Add the User to the Database
+  //   this.http.post('http://localhost:3000/register',data, {responseType:'text'})
+  //   .subscribe((results)=>{
+
+
+  //     if (this.isVisible) { 
+  //       return;
+  //     } 
+  //     this.isVisible = true;
+  //     setTimeout(()=> this.isVisible = false,850)
+
+  //     setTimeout(()=> this.router.navigate(['/login']),900)
+
+  //     })
+  //   }
   }
 
 

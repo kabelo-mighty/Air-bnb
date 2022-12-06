@@ -28,6 +28,7 @@
                     <!-----------vali-->    
                     <div *ngIf="submitted && f['firstname'].errors" class="invalid-feedback">
                         <div *ngIf="f['firstname'].errors['required']">firstname is required</div>
+                        <div *ngIf="f['firstname'].errors['minlength']">firstname must be atleast 3 characters</div>
                     </div>
                         
                 <!-----------vali-->  
@@ -41,6 +42,7 @@
           
                        <div *ngIf="submitted && f['lastname'].errors" class="invalid-feedback">
                         <div *ngIf="f['lastname'].errors['required']">lastname is required</div>
+                        <div *ngIf="f['lastname'].errors['minlength']">Lastname must be atleast 3 characters</div>
                       </div>
                         
            <!-----------vali--> 
@@ -109,6 +111,3 @@
  
 </body>
 <router-outlet></router-outlet>
-<div class="updated" [class.visible]="isVisible"> 
-    <i class="fa fa-exclamation-circle" style="font-size: 20px;"></i> User registered successfully.
-</div>

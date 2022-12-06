@@ -65,7 +65,7 @@
                 
                 
                 
-                    <button  class="btn btn-sm d-block submit-button w-100" type="submit" style="background: #DEAE05;border-radius: 5px;"><i class="fa fa-circle-o-notch"></i>&nbsp;Sign In</button>
+                    <button  class="btn btn-sm d-block submit-button w-100" [disabled]="form.invalid" type="submit" style="background: #DEAE05;border-radius: 5px;"><i class="fa fa-circle-o-notch"></i>&nbsp;Sign In</button>
             </form> 
 
             <br>
@@ -76,12 +76,4 @@
         <p class="copyright">LaItalia BnB © 2022</p>
     </footer>
 </body>
-<!--------arlet-->
 
-<div class="updated" [class.visible]="isVisible"> 
-    <i class="fa fa-exclamation-circle" style="font-size: 20px;"></i> Login successfully.
-</div>
-<div class="updated" [class.visible]="Visible"> 
-    <i class="fa fa-exclamation-circle" style="font-size: 20px;"></i> Wrong login credentials.
-</div>
-<!-----------------> 

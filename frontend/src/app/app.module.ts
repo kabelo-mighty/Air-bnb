@@ -32,7 +32,7 @@ import { GuardService } from './service/guard.service';
 import { AuthService } from './service/auth.service';
 import { NotificationComponent } from './user/notification/notification.component';
 import { ContactsComponent } from './admin/contacts/contacts.component';
-
+import { NgToastModule } from 'ng-angular-popup';
 
 
 RouterModule
@@ -64,7 +64,7 @@ RouterModule
     ContactsComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,NgToastModule,
     AppRoutingModule,HttpClientModule,FormsModule,ReactiveFormsModule,NgxPaginationModule,NgxSpinnerModule,BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },

@@ -21,6 +21,7 @@
     "@auth0/angular-jwt": "^5.1.0",
     "angular-material-data-table": "^0.10.10",
     "jquery": "^3.6.1",
+    "ng-angular-popup": "^0.2.0",
     "ngx-pagination": "^6.0.3",
     "ngx-spinner": "^14.0.0",
     "paginator": "^1.0.0",
