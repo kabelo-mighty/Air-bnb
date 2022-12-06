@@ -29,6 +29,7 @@
                     <div *ngIf="submitted && f['firstname'].errors" class="invalid-feedback">
                         <div *ngIf="f['firstname'].errors['required']">firstname is required</div>
                         <div *ngIf="f['firstname'].errors['minlength']">firstname must be atleast 3 characters</div>
+                        <div *ngIf="f['firstname'].errors['pattern']">Field should conatin alaphabetical characters only</div>
                     </div>
                         
                 <!-----------vali-->  
@@ -43,6 +44,7 @@
                        <div *ngIf="submitted && f['lastname'].errors" class="invalid-feedback">
                         <div *ngIf="f['lastname'].errors['required']">lastname is required</div>
                         <div *ngIf="f['lastname'].errors['minlength']">Lastname must be atleast 3 characters</div>
+                        <div *ngIf="f['lastname'].errors['pattern']">Field should conatin alaphabetical characters only</div>
                       </div>
                         
            <!-----------vali--> 
@@ -75,6 +77,15 @@
             </div>
             <div *ngIf="f['password'].errors['maxlength']">
              must not exceed 40 characters
+            </div>
+            <div *ngIf="f['password'].errors['pattern']">
+                Password should contain atleast 1 lowercase alphabetical character
+            </div>
+            <div *ngIf="f['password'].errors['pattern']">
+                Password should contain atleast 1 uppercase alphabetical character
+            </div>
+            <div *ngIf="f['password'].errors['pattern']">
+                Password should contain atleast 1 numeric character
             </div>
           </div>
         <!----------------->

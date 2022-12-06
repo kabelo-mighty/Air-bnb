@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
     this.form = this.formBuilder.group(
       {
         firstname: ['', [Validators.required,
-                    Validators.minLength(3)]
+                    Validators.minLength(3),Validators.pattern('/[a-zA-Z][a-zA-Z ]+[a-zA-Z ]/')]
                   ],
         
         lastname: [
@@ -45,6 +45,7 @@ export class RegisterComponent implements OnInit {
           [
             Validators.required,
            Validators.minLength(3)
+           ,Validators.pattern('/[a-zA-Z][a-zA-Z ]+[a-zA-Z]$/')
            // Validators.maxLength(20)
           ]
         ],
@@ -54,7 +55,11 @@ export class RegisterComponent implements OnInit {
           [
             Validators.required,
             Validators.minLength(6),
-            Validators.maxLength(40)
+            Validators.maxLength(40),
+            Validators.pattern('/^(?=.*[a-z])/'),
+            Validators.pattern('/^(?=.*[A-Z])/'),
+            Validators.pattern('/^(?=.*[0-9])/')
+            
           ]
         ],
         confirmPassword: ['', Validators.required]
