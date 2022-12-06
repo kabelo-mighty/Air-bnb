@@ -15,6 +15,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   export class BookingComponent implements OnInit {
     info:any;
     inf=[];
+    q:any;
     user = {
       user_id: '',
       firstname:'',
