@@ -17,7 +17,8 @@ export class ProfileComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
     firstname: new FormControl(''),
-   lastname: new FormControl('')
+   lastname: new FormControl(''),
+   email: new FormControl('')
    
   });
   submitted = false;
@@ -29,7 +30,8 @@ export class ProfileComponent implements OnInit {
   user = {
     user_id: '',
     firstname:'',
-    lastname:''
+    lastname:'',
+    email:''
 
 }
   ngOnInit(): void {
@@ -77,7 +79,7 @@ export class ProfileComponent implements OnInit {
 
     if(data.firstname!="" && data.lastname!=""){
 
-      
+
       let id=this.user.user_id
       console.log(id)
       console.log(data)

@@ -499,11 +499,12 @@ res.send(results)
 
 
             const id=parseInt(req.params.id)
-            const {firstname,lastname} = req.body; 
+            const {firstname,lastname,email} = req.body; 
             var profilevalue={
 
              "firstname":firstname,
-             "lastname":lastname
+             "lastname":lastname,
+             "email":email
         
            
           }

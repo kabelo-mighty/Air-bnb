@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BnbService } from 'src/app/service/bnb.service';
 import { JwtService } from 'src/app/service/jwt.service';
@@ -11,9 +13,18 @@ import { JwtService } from 'src/app/service/jwt.service';
   styleUrls: ['./profileadmin.component.scss']
 })
 export class ProfileadminComponent implements OnInit {
+
+  
+  form: FormGroup = new FormGroup({
+    firstname: new FormControl(''),
+   lastname: new FormControl(''),
+   email: new FormControl('')
+   
+  });
+  submitted = false;
   person:any;
   public isVisible: boolean = false;
-  constructor(private route: Router,private bnbservice:BnbService,private jwtService : JwtService,private http:HttpClient,private spinner: NgxSpinnerService) { }
+  constructor(private router: Router,private bnbservice:BnbService,private jwtService : JwtService,private http:HttpClient,private formBuilder: FormBuilder, private toast : NgToastService,private spinner: NgxSpinnerService) { }
   user = {
     user_id: '',
     firstname:'',
@@ -30,6 +41,30 @@ export class ProfileadminComponent implements OnInit {
      setTimeout(() => {
        this.spinner.hide();
      }, 5000); 
+
+
+
+     this.form = this.formBuilder.group(
+      {
+        firstname: ['', [Validators.required,
+                    Validators.minLength(3),Validators.pattern("^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$")]
+                  ],
+        
+        lastname: [
+          '',
+          [
+            Validators.required,
+           Validators.minLength(3)
+           ,Validators.pattern("^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$")
+           // Validators.maxLength(20)
+          ]
+        ]
+       
+      }
+    );
+
+
+
     this.user= this.jwtService.getDetails(localStorage.getItem('token')).data[0];
     let id=this.user.user_id
 
@@ -39,30 +74,36 @@ export class ProfileadminComponent implements OnInit {
    
       })
   }
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
+  }
 
   onSubmit(data:any){
-
-    let id=this.user.user_id
-   console.log(id)
-   console.log(data)
-
-   this.http.put('http://localhost:3000/updateprofile/'+id,data, {responseType:'text'})
-    .subscribe((results)=>{
-
-      this.bnbservice.currentUser(id).subscribe((data)=>{
-        this.person= data;
-        console.log(this.person)
+    this.submitted = true;
+    if(data.firstname!="" && data.lastname!=""){
 
 
-        if (this.isVisible) { 
-          return;
-        } 
-        this.isVisible = true;
-        setTimeout(()=> this.isVisible = false,850)
-     
-        })
+      let id=this.user.user_id
+      console.log(id)
+      console.log(data)
+   
+      this.http.put('http://localhost:3000/updateprofile/'+id,data, {responseType:'text'})
+       .subscribe((results)=>{
+   
+         this.bnbservice.currentUser(id).subscribe((data)=>{
+           this.person= data;
+           console.log(this.person)
+   
+   
+           this.toast.success({detail:"Success",summary:'Profile updated successfully', duration:2000})
+           setTimeout(()=> this.router.navigate(['/profileadmin']),1600)
+   
+         })
+       
+       })
 
-      })
+
+    }
     
     }
   }
