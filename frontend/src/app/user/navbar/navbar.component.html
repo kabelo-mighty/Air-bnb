@@ -4,10 +4,10 @@
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link"  routerLink="/dashboard" style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-tachometer"></i> Dashboard</a></li>
-                <li class="nav-item dropdown"><a aria-expanded="false" data-bs-toggle="dropdown" class="dropdown-toggle nav-link"   style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-book"></i> Bookings </a>
-                    <div class="dropdown-menu" style="margin-top: 21px;background: #262626;"><a class="dropdown-item"    routerLink="/room" style="color: rgb(222,174,7);">view rooms</a><a class="dropdown-item" routerLink="/booking" style="color: rgb(222,174,7);">my bookings</a></div>
-                </li>
+             
+                <li class="nav-item"><a class="nav-link"   routerLink="/room" style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-home"></i>View room</a></li>
                
+                <li class="nav-item"><a class="nav-link"   routerLink="/booking" style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-book"></i> my bookings</a></li>
                 <li class="nav-item dropdown no-arrow mx-1" >
                     <div class="nav-item dropdown no-arrow" *ngFor="let e of notification"> 
                         <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" routerLink="/notification" style="color: rgb(255,255,255);"><i style="color: rgb(222,174,7);" class="fas fa-bell fa-fw"></i> Notifications&nbsp;&nbsp;&nbsp;<span class="badge bg-danger badge-counter">{{e.countn}}</span>
@@ -17,11 +17,8 @@
                     
                 </li>
 
-
-                <li class="nav-item dropdown"><a aria-expanded="false" data-bs-toggle="dropdown" class="dropdown-toggle nav-link"   style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-user"></i> Account </a>
-                    <div class="dropdown-menu" style="margin-top: 21px;background: rgb(38,38,38);"><a class="dropdown-item"  routerLink="/profile" style="color: #deae07;">profile</a><a class="dropdown-item" (click)="onClick()" style="color: #deae07;">Logout</a></div>
-                </li>
-              
+                <li class="nav-item"><a class="nav-link"   routerLink="/profile" style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-user"></i> Profile</a></li>
+                <li class="nav-item"><a class="nav-link"  (click)="onClick()"style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-power-off"></i> LogOut</a></li>
                 <li class="nav-item"><a class="nav-link shadow-none"  style="color: rgb(255,255,255);border: 1px none rgb(222,174,7) ;"><i class="fa fa-user-circle" style="color: #DEAE05;"></i>&nbsp;{{user.firstname}} {{user.lastname}}</a></li>
             </ul>
         </div>
@@ -29,3 +26,4 @@
 </nav>
 <br>
 <router-outlet></router-outlet>
+

@@ -4,25 +4,15 @@
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link"  routerLink="/dashboardadmin" style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-tachometer"></i> Dashboard</a></li>
-                <li class="nav-item dropdown"><a aria-expanded="false" data-bs-toggle="dropdown" class="dropdown-toggle nav-link"   style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-book"></i> Bookings </a>
-                    <div class="dropdown-menu" style="margin-top: 21px;background: #262626;">
-                     
-                        <a class="dropdown-item" routerLink="/viewbookings" style="color: rgb(222,174,7);">Bookings</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown"><a aria-expanded="false" data-bs-toggle="dropdown" class="dropdown-toggle nav-link"   style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-home"></i>Manage Room</a>
-                    <div class="dropdown-menu" style="margin-top: 21px;background: #262626;">
-                        <a class="dropdown-item"  routerLink="/addroom" style="color: rgb(222,174,7);">Add room</a>
-                        <a class="dropdown-item" routerLink="/viewroom" style="color: rgb(222,174,7);">View Rooms</a>
-                    </div>
-                </li>
+               
+                <li class="nav-item"><a class="nav-link" routerLink="/viewbookings"  style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-book"></i> Bookings</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/addroom"  style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-home"></i> Add room</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/viewroom"  style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-home"></i> View Rooms</a></li>
+    
                 <li class="nav-item"><a class="nav-link"  routerLink="/contacts" style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-comment"></i> Comments</a></li>
-                <li class="nav-item dropdown"><a aria-expanded="false" data-bs-toggle="dropdown" class="dropdown-toggle nav-link"   style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-user"></i> Account </a>
-                    <div class="dropdown-menu" style="margin-top: 21px;background: rgb(38,38,38);">
-                        <a class="dropdown-item"  routerLink="/Profileadmin" style="color: #deae07;">profile</a>
-                        <a class="dropdown-item" (click)="onClick()" style="color: #deae07;">Logout</a></div>
-                </li>
-              
+                
+                <li class="nav-item"><a class="nav-link" routerLink="/Profileadmin"  style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-user"></i> profile</a></li>
+                <li class="nav-item"><a class="nav-link"  (click)="onClick()" style="color: rgb(255,255,255);"><i style="color: #DEAE05;" class="fa fa-power-off"></i> LogOut</a></li>
                 <li class="nav-item"><a class="nav-link shadow-none"  style="color: rgb(255,255,255);border: 1px none rgb(222,174,7) ;"><i class="fa fa-user-circle" style="color: #DEAE05;"></i>&nbsp;{{user.firstname}} {{user.lastname}} </a></li>
             </ul>
         </div>
