@@ -12,7 +12,7 @@ export class ViewbookingsComponent implements OnInit {
   info:any;
   inf=[];
   dtOptions: DataTables.Settings = {};
-
+q:any;
   public approveisVisible: boolean = false;
   public cancelisVisible: boolean = false;
   public deleteisVisible: boolean = false;
@@ -23,15 +23,7 @@ export class ViewbookingsComponent implements OnInit {
   ngOnInit(): void {
 
 
-    setTimeout(()=>{                          
-      $('#bookings').DataTable( {
-        pagingType: 'full_numbers',
-        pageLength: 5,
-        processing: true,
-        lengthMenu : [5, 10, 25],
-        order:[[1,"desc"]]
-    } );
-    }, 1);
+   
 
     
     this.bnbService.allbooks(this.info).subscribe(res=>{
